@@ -1,10 +1,10 @@
 import { Container } from "./style"
 import { Menu, MenuItem, Button } from "@material-ui/core"
-import MenuIcon from '@material-ui/icons/Menu'
+import MenuIcon from "@material-ui/icons/Menu"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-const Header = ({isAuth}) => {
+const Header = ({ isAuth }) => {
   const [anchorEl, setAnchorEl] = useState(false)
 
   const handleMenu = () => {
@@ -24,13 +24,20 @@ const Header = ({isAuth}) => {
           onClick={handleMenu}
           color="default"
         >
-            <MenuIcon/>
+          <MenuIcon />
         </Button>
-        <Menu id="header-menu" anchorEl={anchorEl} open={anchorEl} anchorOrigin={{
+        <Menu
+          id="header-menu"
+          anchorEl={anchorEl}
+          open={anchorEl}
+          anchorOrigin={{
             vertical: "bottom",
-            horizontal: "right"
-        }}>
-          <MenuItem onClick={handleMenu}>{isAuth ? "Perfil" : "Login"}</MenuItem>
+            horizontal: "right",
+          }}
+        >
+          <MenuItem onClick={handleMenu}>
+            {isAuth ? "Perfil" : "Login"}
+          </MenuItem>
           <MenuItem onClick={handleMenu}>Lavandersons</MenuItem>
         </Menu>
       </div>
