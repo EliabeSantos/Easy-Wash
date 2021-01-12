@@ -1,19 +1,44 @@
+import { Container } from "./style";
 import { useHistory } from "react-router-dom";
-const LaundryCard = ({ name, score, coordinates, schedule, frete, id }) => {
+import { AiFillStar } from "react-icons/ai";
+const LaundryCard = ({
+  name,
+  score,
+  distance,
+  schedule,
+  deliveryFee,
+  src,
+  id,
+}) => {
   const history = useHistory();
-
   const handleGoToLaundry = () => {
     history.push(`/laundry/${id}`);
   };
   return (
-    <div>
-      <figure>
-        <div className="laundryCard_image_container"></div>
-      </figure>
-      <div>nome</div>
-      <div>nota, distancia</div>
-      <div>horario,valor</div>
-    </div>
+    <Container
+      src={src}
+      className="laundryCard_container"
+      onClick={handleGoToLaundry}
+    >
+      <div className="laundryCard_image_container">
+        <div className="laundryCard_image"></div>
+      </div>
+
+      <div className="laundryCard_content">
+        <div className="laundryCard_content_title">{name}</div>
+        <div className="laundryCard_content_score">
+          <span className="score">
+            {score}
+            <AiFillStar />
+          </span>
+          <span>{distance}</span>
+        </div>
+        <div className="laundryCard_content_price">
+          <span>{schedule}</span>
+          <span>{deliveryFee}</span>
+        </div>
+      </div>
+    </Container>
   );
 };
 
