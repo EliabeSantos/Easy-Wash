@@ -1,5 +1,5 @@
 import { SharedButton } from "./style.js";
-const DefaultButton = ({ name,width,height, _func }) => {
+const DefaultButton = ({ name,type,width,height, _func }) => {
   return (
     <SharedButton
       className="default-button"
@@ -7,6 +7,7 @@ const DefaultButton = ({ name,width,height, _func }) => {
       color="primary"
       onClick={_func}
       width={width}
+      type={type}
       height={height}
     >
       {name}
