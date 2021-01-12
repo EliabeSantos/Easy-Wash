@@ -1,9 +1,11 @@
 import Routes from "./routes"
+import Header from "./components/header"
 
 const App = () => {
   return (
     <>
-      <Routes />
+      <Header />
+      {/* <Routes /> */}
     </>
   )
 }
