@@ -10,6 +10,6 @@
       "react_app_readme.md": true,
       "README.md": true,
       "yarn.lock": true,
-      ".eslintcache": true
+      ".eslintcache": false
     }
   }
