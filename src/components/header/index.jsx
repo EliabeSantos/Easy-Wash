@@ -4,7 +4,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-const Header = () => {
+const Header = ({isAuth}) => {
   const [anchorEl, setAnchorEl] = useState(false)
 
   const handleMenu = () => {
@@ -30,7 +30,7 @@ const Header = () => {
             vertical: "bottom",
             horizontal: "right"
         }}>
-          <MenuItem onClick={handleMenu}>Perfil</MenuItem>
+          <MenuItem onClick={handleMenu}>{isAuth ? "Perfil" : "Login"}</MenuItem>
           <MenuItem onClick={handleMenu}>Lavandersons</MenuItem>
         </Menu>
       </div>
