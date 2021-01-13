@@ -12,7 +12,11 @@ const CartCard = ({ title, value }) => {
     <>
       <MainContainer>
         <ImgContainer>
-          <DefaultImg />
+          <DefaultImg
+            src={
+              "https://e7.pngegg.com/pngimages/44/475/png-clipart-laundry-liquid-clothing-clothing-clean-clothes-basket.png"
+            }
+          />
         </ImgContainer>
         <InfoContainer>
           <Title>{title}</Title>

@@ -4,6 +4,7 @@ export const MainContainer = styled.div`
   width: 100%;
   height: 9rem;
   background-color: #fff;
+  margin: 0;
   display: flex;
   border-bottom: 3px solid rgba(0, 0, 0, 0.3);
   @media (min-width: 600px) {
