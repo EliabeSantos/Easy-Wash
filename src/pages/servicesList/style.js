@@ -6,6 +6,7 @@ export const MainContainer = styled.div`
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 export const ServiceImageContainer = styled.div`
   width: 100%;
@@ -24,6 +25,9 @@ export const ServiceInfo = styled.div`
 
   display: flex;
   flex-wrap: wrap;
+
+  @media (min-width: 450px) {
+  }
 `;
 export const Title = styled.h1`
   width: 69%;
@@ -32,12 +36,20 @@ export const Title = styled.h1`
   font-weight: normal;
   text-align: left;
   padding-left: 0.5rem;
+
+  @media (min-width: 450px) {
+    width: 100%;
+  }
 `;
 export const Rate = styled.h2`
   width: 29%;
   height: 4rem;
   font-weight: normal;
   margin-bottom: 0;
+
+  @media (min-width: 450px) {
+    width: 100%;
+  }
 `;
 export const Description = styled.h1`
   width: 100%;
@@ -45,6 +57,10 @@ export const Description = styled.h1`
   font-size: 16px;
   font-weight: normal;
   text-align: center;
+
+  @media (min-width: 450px) {
+    width: 100%;
+  }
 `;
 export const CartContainer = styled.div`
   width: 100%;
