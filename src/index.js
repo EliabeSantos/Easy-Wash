@@ -1,17 +1,20 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import App from "./App"
-import "./global.css"
-import reportWebVitals from "./reportWebVitals"
-import { BrowserRouter } from "react-router-dom"
-import { Provider } from "react-redux"
-import store from "./store"
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./global.css";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+import OpenModalProvider from "./context/openModal";
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <OpenModalProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </OpenModalProvider>
   </Provider>,
   document.getElementById("root")
 );
