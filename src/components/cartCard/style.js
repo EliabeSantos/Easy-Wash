@@ -29,19 +29,25 @@ export const InfoContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   @media (max-width: 320px) {
     width: 50%;
   }
 `;
 export const Title = styled.h2`
   font-size: 18px;
+  width: 100%;
+  padding-left: 1.5rem;
   @media (max-width: 320px) {
-    text-align: center;
+    text-align: left;
     font-size: 16px;
   }
 `;
 export const Value = styled.h3`
   font-size: 16px;
+  width: 100%;
+  padding-left: 1.5rem;
+  text-align: left;
 `;
 export const DefaultImg = styled.img`
   width: 6rem;
