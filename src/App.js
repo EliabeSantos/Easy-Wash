@@ -1,9 +1,10 @@
 import Routes from "./routes";
+import Landing from "./pages/landing";
 
 const App = () => {
   return (
     <>
-      <Routes />
+      <Landing />
     </>
   );
 };

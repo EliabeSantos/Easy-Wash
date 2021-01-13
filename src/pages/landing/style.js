@@ -21,6 +21,7 @@ export const Title = styled.h1`
 export const MainImageContainer = styled.div`
   width: 100%;
   height: 40%;
+  margin-bottom: 1rem;
 
   display: flex;
   justify-content: center;
