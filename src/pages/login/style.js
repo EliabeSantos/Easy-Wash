@@ -34,7 +34,6 @@ border:2px solid black;
 export const ContainerImage = styled.div`
 display:flex;
 justify-content:center;
-
 `
 export const Image = styled.img`
 width:80%;
