@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: #3d90ab;
+  background-color: var(--color-primary);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,4 +32,4 @@ export const Container = styled.div`
       }
     }
   }
-`
+`;
