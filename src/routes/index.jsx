@@ -5,8 +5,8 @@ const Routes = () => {
   return (
     <>
       <Switch>
-        {/*
         <Route exact path="/" component={Landing} />
+        {/*
         <Route exact path="/register" component={} />
         <Route exact path="/login" component= />
         <Route exact path="/profile/client" component={} />
