@@ -10,6 +10,8 @@ function SharedInput({
   _inputRef,
   _error,
   _helperText,
+  value,
+  _onChange,
 }) {
   return (
     <>
@@ -23,6 +25,8 @@ function SharedInput({
         inputRef={_inputRef}
         error={_error}
         helperText={_helperText}
+        value={value}
+        onChange={_onChange}
       />
     </>
   );
