@@ -4,6 +4,7 @@ import ServiceCard from "../../components/serviceCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, useParams } from "react-router-dom";
+import DefaultButton from "../../components/sharedButton";
 
 import {
   MainContainer,
@@ -14,8 +15,10 @@ import {
   Rate,
   Description,
   CartContainer,
+  CartItems,
 } from "./style";
 
+import { FaShoppingCart } from "react-icons/fa";
 import { BsStarFill } from "react-icons/bs";
 
 const ServiceList = () => {
@@ -57,7 +60,15 @@ const ServiceList = () => {
         {services.map(({ title, price, description }) => (
           <ServiceCard title={title} price={price} description={description} />
         ))}
-        <CartContainer></CartContainer>
+        <CartContainer>
+          <CartItems>
+            <FaShoppingCart size={"20px"}></FaShoppingCart>
+          </CartItems>
+          <CartItems>
+            <DefaultButton name="Ver Carrinho" />
+          </CartItems>
+          <CartItems></CartItems>
+        </CartContainer>
       </MainContainer>
     </>
   );
