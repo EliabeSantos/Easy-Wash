@@ -1,0 +1,24 @@
+:root {
+  font-size: 60%;
+  --color-primary: #3d90ab;
+  --color-secondary: #47d4ff;
+  font-family: "Poppins";
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  :root {
+    font-size: 70%;
+   
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    font-size: 100%;
+  }
+}
