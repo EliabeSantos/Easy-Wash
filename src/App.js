@@ -1,11 +1,12 @@
-import Routes from "./routes"
+import Routes from "./routes";
+import Landing from "./pages/landing";
 
 const App = () => {
   return (
     <>
-      <Routes />
+      <Landing />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
