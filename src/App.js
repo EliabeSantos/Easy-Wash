@@ -1,11 +1,12 @@
-import Routes from "./routes"
+import Routes from "./routes";
+import ServiceList from "./pages/servicesList";
 
 const App = () => {
   return (
     <>
-      <Routes />
+      <ServiceList />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
