@@ -1,11 +1,12 @@
-import Routes from "./routes"
+import Routes from "./routes";
+import ServiceCard from "./components/serviceCard";
 
 const App = () => {
   return (
     <>
-      <Routes />
+      <ServiceCard />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
