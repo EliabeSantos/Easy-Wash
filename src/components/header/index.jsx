@@ -1,15 +1,15 @@
-import { Container } from "./style"
-import { Menu, MenuItem, Button } from "@material-ui/core"
-import MenuIcon from "@material-ui/icons/Menu"
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Container } from "./style";
+import { Menu, MenuItem, Button } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = ({ isAuth }) => {
-  const [anchorEl, setAnchorEl] = useState(false)
+  const [anchorEl, setAnchorEl] = useState(false);
 
   const handleMenu = () => {
-    setAnchorEl(!anchorEl)
-  }
+    setAnchorEl(!anchorEl);
+  };
   return (
     <Container>
       <div className="imageContainer">
@@ -42,7 +42,7 @@ const Header = ({ isAuth }) => {
         </Menu>
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

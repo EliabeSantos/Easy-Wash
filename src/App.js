@@ -1,13 +1,11 @@
-import Routes from "./routes"
-import Header from "./components/header"
+import Routes from "./routes";
 
 const App = () => {
   return (
     <>
-      <Header />
-      {/* <Routes /> */}
+      <Routes />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
