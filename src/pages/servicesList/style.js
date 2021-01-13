@@ -11,4 +11,6 @@ export const ServiceImageContainer = styled.div`
 `;
 export const ServiceImage = styled.img`
   width: 100%;
+  margin: 5px 0;
+  filter: blur(5px);
 `;
