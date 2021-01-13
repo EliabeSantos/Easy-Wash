@@ -2,8 +2,8 @@ import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 
 export const SharedButton = styled(Button)`
-  width: ${(props) => (props.width ? props.width : "14rem")};
-  height: ${(props) => (props.height ? props.height : "2rem")};
+  width: ${(props) => (props.width ? props.width : "23rem")};
+  height: ${(props) => (props.height ? props.height : "4rem")};
 
   background-color:#47D4FF !important;
   border-radius: 3px !important;
