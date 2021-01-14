@@ -1,14 +1,15 @@
 import { Switch, Route } from "react-router-dom";
 import Landing from "../pages/landing";
+import CheckoutServices from "./pages/checkoutServices";
 
 const Routes = () => {
   return (
     <>
       <Switch>
-        {/*
         <Route exact path="/" component={Landing} />
-        <Route exact path="/register" component={} />
+        {/*
         <Route exact path="/login" component= />
+        <Route exact path="/register" component={} />
         <Route exact path="/profile/client" component={} />
         <Route exact path="/profile/client/edit" component={} />
         <Route exact path="/profile/company" component={} />
