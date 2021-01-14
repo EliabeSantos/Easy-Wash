@@ -44,14 +44,14 @@ const ServiceCard = ({ title, description, price, service }) => {
                     setValue(value - 1);
                   }
                 }}
-                size="2rem"
+                size="1.5rem"
               />
               <Quantify>{value}</Quantify>
               <BiPlus
                 onClick={() => {
                   setValue(value + 1);
                 }}
-                size="2rem"
+                size="1.5rem"
               />
             </ProductSelectContainer>
             <PriceContainer>

@@ -7,6 +7,10 @@ export const Container = styled.div`
   align-items: center;
   height: 4rem;
 
+  @media (min-width: 1280px) {
+    height: 3rem;
+  }
+
   .imageContainer {
     background-color: #fff;
     height: 3.5rem;

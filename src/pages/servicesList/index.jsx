@@ -5,6 +5,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, useParams } from "react-router-dom";
 import DefaultButton from "../../components/sharedButton";
+import { useHistory } from "react-router-dom";
 
 import {
   MainContainer,
@@ -17,6 +18,13 @@ import {
   CartContainer,
   CartItems,
   AllContentContainer,
+  CartText,
+  FinalPrice,
+  DesckCartContainer,
+  DesckCartItems,
+  DesckServiceCard,
+  DesckServiceContainer,
+  CardContainer,
 } from "./style";
 
 import { FaShoppingCart } from "react-icons/fa";
@@ -27,6 +35,8 @@ const ServiceList = () => {
   const [services, setServices] = useState([]);
   const [user, setUser] = useState([]);
   const axios = require("axios");
+  const total = JSON.parse(localStorage.getItem("cart"));
+  const history = useHistory();
 
   const getServices = async () => {
     try {
@@ -46,7 +56,7 @@ const ServiceList = () => {
   }, [user]);
   return (
     <>
-      <Header></Header>
+      <Header style="height: 4vh"></Header>
       <AllContentContainer>
         <MainContainer>
           <ServiceImageContainer>
@@ -59,24 +69,86 @@ const ServiceList = () => {
             </Rate>
             <Description>Pedido minimo de 10 itens</Description>
           </ServiceInfo>
-          {services.map((services) => (
-            <ServiceCard
-              title={services.title}
-              price={services.price}
-              description={services.description}
-              service={services}
-            />
-          ))}
-          <CartContainer>
-            <CartItems>
-              <FaShoppingCart size={"20px"}></FaShoppingCart>
-            </CartItems>
-            <CartItems>
-              <DefaultButton name="Ver Carrinho" />
-            </CartItems>
-            <CartItems></CartItems>
-          </CartContainer>
+          <CardContainer>
+            {services.map((services) => (
+              <ServiceCard
+                title={services.title}
+                price={services.price}
+                description={services.description}
+                service={services}
+              />
+            ))}
+            {services.map((services) => (
+              <ServiceCard
+                title={services.title}
+                price={services.price}
+                description={services.description}
+                service={services}
+              />
+            ))}
+          </CardContainer>
         </MainContainer>
+        <CartContainer>
+          <CartItems>
+            <FaShoppingCart color="white" size={"20px"}></FaShoppingCart>
+          </CartItems>
+          <CartItems>
+            <CartText onClick={() => history.push("/checkout")}>
+              Ver Carrinho
+            </CartText>
+          </CartItems>
+          <CartItems>
+            <FinalPrice>
+              R${" "}
+              {total
+                ? Intl.NumberFormat("de-DE", {
+                    style: "currency",
+                    currency: "BRL",
+                  }).format(total.total)
+                : "00,00"}
+            </FinalPrice>
+          </CartItems>
+          <DesckCartContainer>
+            <DesckCartItems>
+              <h1>Total</h1>
+            </DesckCartItems>
+            <DesckCartItems>
+              <h1>
+                {total
+                  ? Intl.NumberFormat("de-DE", {
+                      style: "currency",
+                      currency: "BRL",
+                    }).format(total.total)
+                  : "00,00"}
+              </h1>
+            </DesckCartItems>
+            <DesckCartItems>
+              <DefaultButton
+                _func={() => {
+                  history.push("/checkout");
+                }}
+                name={"Ver Carrinho"}
+              ></DefaultButton>
+            </DesckCartItems>
+          </DesckCartContainer>
+          <DesckServiceContainer>
+            {total ? (
+              total.products.map((services) => (
+                <DesckServiceCard>
+                  <p>{services.title}</p>
+                  <p>
+                    {Intl.NumberFormat("de-DE", {
+                      style: "currency",
+                      currency: "BRL",
+                    }).format(services.price)}
+                  </p>
+                </DesckServiceCard>
+              ))
+            ) : (
+              <p>Sem Items no carrinho</p>
+            )}
+          </DesckServiceContainer>
+        </CartContainer>
       </AllContentContainer>
     </>
   );
