@@ -15,10 +15,14 @@ import DefaultButton from "../sharedButton";
 import { useState } from "react";
 import { BiPlus } from "react-icons/bi";
 import { BiMinus } from "react-icons/bi";
+import { addToCartThunk } from "../../store/modules/cart/thunk";
+import { useDispatch } from "react-redux";
 
-const ServiceCard = ({ title, description, price }) => {
+const ServiceCard = ({ title, description, price, service }) => {
   const [value, setValue] = useState(1);
+  const [serciveCount, setServiceCount] = useState([]);
   const realPrice = parseInt(price) * value;
+  const dispatch = useDispatch();
   return (
     <>
       <MainContainer>
@@ -52,7 +56,16 @@ const ServiceCard = ({ title, description, price }) => {
             </ProductSelectContainer>
             <PriceContainer>
               <PriceText>R${value > 1 ? realPrice : price}</PriceText>
-              <DefaultButton name={"Adicionar"} width="50%" />
+              <DefaultButton
+                _func={() => {
+                  for (let i = 0; i < value; i++) {
+                    dispatch(addToCartThunk(service));
+                    setValue(1);
+                  }
+                }}
+                name={"Adicionar"}
+                width="50%"
+              />
             </PriceContainer>
           </ButtonContainer>
         </InfoContainer>

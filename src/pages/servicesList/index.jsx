@@ -59,11 +59,12 @@ const ServiceList = () => {
             </Rate>
             <Description>Pedido minimo de 10 itens</Description>
           </ServiceInfo>
-          {services.map(({ title, price, description }) => (
+          {services.map((services) => (
             <ServiceCard
-              title={title}
-              price={price}
-              description={description}
+              title={services.title}
+              price={services.price}
+              description={services.description}
+              service={services}
             />
           ))}
           <CartContainer>
