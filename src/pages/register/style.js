@@ -1,11 +1,18 @@
 import styled from "styled-components";
-
+export const OuterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 export const Title = styled.h1`
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-family: "mukta";
   font-weight: 400;
 
   margin: 2rem 0;
+
+  @media (min-width: 360px) {
+    font-size: 4rem;
+  }
 `;
 
 export const Container = styled.div`
@@ -14,10 +21,7 @@ export const Container = styled.div`
 
   justify-content: center;
   align-items: center;
-
-  max-width: 640px;
-
-  margin: 0 auto;
+  align-content: center;
 `;
 
 export const Form = styled.form`
@@ -27,7 +31,8 @@ export const Form = styled.form`
   align-items: center;
   justify-content: space-around;
 
-  width: 100%;
+  width: calc(100% - 4rem);
+  max-width: 648px;
 
   padding: 2rem 0 4rem 0;
   .container_personal_info,
@@ -39,11 +44,8 @@ export const Form = styled.form`
     display: flex;
     flex-direction: column;
 
-    align-items: flex-start;
-    justify-content: space-around;
-  }
-  .container_personal_info {
     align-items: center;
+    justify-content: space-around;
   }
 
   .container_service_info {
@@ -61,8 +63,26 @@ export const Form = styled.form`
   }
   .single_liner {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
 
     width: 100%;
+
+    flex: 1 1 0;
+  }
+
+  .MuiFormControl-marginNormal {
+    margin: 1rem 0.5rem !important;
+  }
+
+  @media (min-width: 440px) {
+    .single_liner {
+      flex-direction: row;
+    }
+  }
+  @media (min-width: 1280px) {
+    .MuiFormControl-marginNormal {
+      margin: 0.5rem 0.5rem !important;
+    }
   }
 `;
