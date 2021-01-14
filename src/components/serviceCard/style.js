@@ -16,7 +16,7 @@ export const MainContainer = styled.div`
   }
   @media (min-width: 1280px) {
     width: 30rem;
-    height: 10rem;
+    height: 12rem;
   }
 `;
 export const ImgContainer = styled.div`
@@ -54,7 +54,7 @@ export const InfoContainer = styled.div`
 
   @media (min-width: 1280px) {
     width: 75%;
-    height: 10rem;
+    height: 12rem;
   }
 `;
 export const Title = styled.h2`
@@ -81,7 +81,7 @@ export const Description = styled.p`
 
   @media (min-width: 1280px) {
     width: 100%;
-    height: 2rem;
+    height: 3rem;
     font-size: 12px;
   }
 `;
@@ -100,6 +100,9 @@ export const ProductSelectContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  @media (min-width: 1280px) {
+    padding-top: 1rem;
+  }
 `;
 export const Quantify = styled.h3`
   margin: 0;
