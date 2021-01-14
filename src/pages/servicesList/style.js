@@ -1,7 +1,14 @@
 import styled from "styled-components";
 
+export const AllContentContainer = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+`;
 export const MainContainer = styled.div`
   width: 100%;
+  max-width: 728px;
   height: 90vh;
   background-color: #ffffff;
   display: flex;
@@ -20,13 +27,16 @@ export const ServiceImage = styled.img`
 `;
 export const ServiceInfo = styled.div`
   width: 100%;
-  height: 10rem;
+  height: 15rem;
   border-bottom: 3px solid rgba(0, 0, 0, 0.5);
 
   display: flex;
   flex-wrap: wrap;
 
   @media (min-width: 450px) {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 export const Title = styled.h1`
@@ -39,6 +49,8 @@ export const Title = styled.h1`
 
   @media (min-width: 450px) {
     width: 100%;
+    display: flex;
+    justify-content: center;
   }
 `;
 export const Rate = styled.h2`
@@ -49,6 +61,8 @@ export const Rate = styled.h2`
 
   @media (min-width: 450px) {
     width: 100%;
+    display: flex;
+    justify-content: center;
   }
 `;
 export const Description = styled.h1`
@@ -60,12 +74,15 @@ export const Description = styled.h1`
 
   @media (min-width: 450px) {
     width: 100%;
+    display: flex;
+    justify-content: center;
   }
 `;
 export const CartContainer = styled.div`
   width: 100%;
   height: 4rem;
   background-color: #3d90ab;
+
   display: flex;
 
   position: absolute;

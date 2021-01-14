@@ -16,6 +16,7 @@ import {
   Description,
   CartContainer,
   CartItems,
+  AllContentContainer,
 } from "./style";
 
 import { FaShoppingCart } from "react-icons/fa";
@@ -46,30 +47,36 @@ const ServiceList = () => {
   return (
     <>
       <Header></Header>
-      <MainContainer>
-        <ServiceImageContainer>
-          <ServiceImage src={MainIMage}></ServiceImage>
-        </ServiceImageContainer>
-        <ServiceInfo>
-          <Title>{user.company}</Title>
-          <Rate>
-            4,5 <BsStarFill color="yellow" size="20px" />
-          </Rate>
-          <Description>Pedido minimo de 10 itens</Description>
-        </ServiceInfo>
-        {services.map(({ title, price, description }) => (
-          <ServiceCard title={title} price={price} description={description} />
-        ))}
-        <CartContainer>
-          <CartItems>
-            <FaShoppingCart size={"20px"}></FaShoppingCart>
-          </CartItems>
-          <CartItems>
-            <DefaultButton name="Ver Carrinho" />
-          </CartItems>
-          <CartItems></CartItems>
-        </CartContainer>
-      </MainContainer>
+      <AllContentContainer>
+        <MainContainer>
+          <ServiceImageContainer>
+            <ServiceImage src={MainIMage}></ServiceImage>
+          </ServiceImageContainer>
+          <ServiceInfo>
+            <Title>{user.company}</Title>
+            <Rate>
+              4,5 <BsStarFill color="yellow" size="20px" />
+            </Rate>
+            <Description>Pedido minimo de 10 itens</Description>
+          </ServiceInfo>
+          {services.map(({ title, price, description }) => (
+            <ServiceCard
+              title={title}
+              price={price}
+              description={description}
+            />
+          ))}
+          <CartContainer>
+            <CartItems>
+              <FaShoppingCart size={"20px"}></FaShoppingCart>
+            </CartItems>
+            <CartItems>
+              <DefaultButton name="Ver Carrinho" />
+            </CartItems>
+            <CartItems></CartItems>
+          </CartContainer>
+        </MainContainer>
+      </AllContentContainer>
     </>
   );
 };
