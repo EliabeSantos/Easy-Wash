@@ -5,7 +5,8 @@
   font-family: "Poppins";
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -13,7 +14,6 @@ html, body {
 @media (min-width: 640px) {
   :root {
     font-size: 70%;
-   
   }
 }
 

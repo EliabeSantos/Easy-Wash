@@ -3664,6 +3664,11 @@ cookie@0.4.0:
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.0.tgz#beb437e7022b3b6d49019d088665303ebe9c14ba"
   integrity sha512-+Hp8fLp57wnUSt0tY0tHEXh4voZRDnoIrZPqlo3DPiI4y9lwg/jqx+1Om94/W6ZaPDOUbnjOt/99w66zk+l1Xg==
 
+coordenadas-do-cep@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/coordenadas-do-cep/-/coordenadas-do-cep-1.2.0.tgz#bbbc3444e3f9d4e8662bab2b41836c7e95522086"
+  integrity sha512-YcmgNl+OneJxrRj7lc+hD8w3w1y3Puqbv5L5Z86mBTIN0+j8U4UL6v3FbAlvyFCnDQNVFWbslhacy39/yNVDcg==
+
 copy-concurrently@^1.0.0:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/copy-concurrently/-/copy-concurrently-1.0.5.tgz#92297398cae34937fcafd6ec8139c18051f0b5e0"
