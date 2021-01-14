@@ -17,6 +17,10 @@ export const Title = styled.h1`
   font-size: 50px;
   margin-top: 5rem;
   margin-bottom: 5rem;
+
+  @media (min-width: 1280px) {
+    margin: 2rem;
+  }
 `;
 export const MainImageContainer = styled.div`
   width: 100%;
@@ -31,6 +35,14 @@ export const Img = styled.img`
   width: 70%;
   max-width: 300px;
   z-index: 1;
+
+  @media (min-width: 1024px) {
+    width: 19rem;
+  }
+
+  @media (min-width: 1280px) {
+    width: 15rem;
+  }
 `;
 export const WaveImg = styled.img`
   position: absolute;
