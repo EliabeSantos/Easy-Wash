@@ -51,9 +51,14 @@ const CheckoutServices = () => {
       <div className="productsContainer">
         <div className="productTitle">Meus produtos</div>
         <div className="productsList">
-          {cart.products.map((product, index) => (
-            <CartCard key={index} title={product.title} value={product.price} />
-          ))}
+          {cart &&
+            cart.products.map((product, index) => (
+              <CartCard
+                key={index}
+                title={product.title}
+                value={product.price}
+              />
+            ))}
         </div>
       </div>
       <div className="footer">
@@ -62,7 +67,7 @@ const CheckoutServices = () => {
           {Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
-          }).format(cart.total)}
+          }).format(cart ? cart.total : 0)}
         </span>
         <DefaultButton
           name="Finalizar Pagamento"
