@@ -21,8 +21,19 @@ const Header = () => {
   const handleMenu = () => {
     setOpen(true);
   };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Container>
+      <div
+        className={`closeArea ${!open && "noPointer"}`}
+        onClick={() => {
+          open && setOpen(false);
+        }}
+      ></div>
       <div className="menuContainer">
         <Button
           aria-controls="header-menu"
@@ -54,9 +65,11 @@ const Header = () => {
             <ListItem button onClick={() => history.push("/main-page")}>
               Lavanderias
             </ListItem>
-            <ListItem button onClick={() => history.push("/checkout")}>
-              Ver Carrinho
-            </ListItem>
+            {auth && (
+              <ListItem button onClick={() => history.push("/checkout")}>
+                Ver Carrinho
+              </ListItem>
+            )}
           </List>
         </Drawer>
       </div>
