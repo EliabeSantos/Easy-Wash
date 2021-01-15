@@ -14,6 +14,7 @@ import {
   WaveImg,
   ButtonsContainer,
   WaveImg2,
+  AllContentContainer,
 } from "./style";
 
 const Landing = () => {
@@ -21,30 +22,32 @@ const Landing = () => {
   return (
     <>
       <Header></Header>
-      <MainContainer>
-        <TitleContainer>
-          <Title>Easy Wash</Title>
-        </TitleContainer>
-        <MainImageContainer>
-          <Img src={MainImg}></Img>
-        </MainImageContainer>
-        <ButtonsContainer>
-          <DefaultButton
-            _func={() => {
-              history.push("/login");
-            }}
-            name={"Login"}
-          />
-          <DefaultButton
-            _func={() => {
-              history.push("/register");
-            }}
-            name={"Register"}
-          />
-        </ButtonsContainer>
+      <AllContentContainer>
+        <MainContainer>
+          <TitleContainer>
+            <Title>Easy Wash</Title>
+          </TitleContainer>
+          <MainImageContainer>
+            <Img src={MainImg}></Img>
+          </MainImageContainer>
+          <ButtonsContainer>
+            <DefaultButton
+              _func={() => {
+                history.push("/login");
+              }}
+              name={"Login"}
+            />
+            <DefaultButton
+              _func={() => {
+                history.push("/register");
+              }}
+              name={"Register"}
+            />
+          </ButtonsContainer>
+        </MainContainer>
         <WaveImg src={waveImg}></WaveImg>
         <WaveImg2 src={waveImg2}></WaveImg2>
-      </MainContainer>
+      </AllContentContainer>
     </>
   );
 };
