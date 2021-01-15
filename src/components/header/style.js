@@ -7,8 +7,17 @@ export const Container = styled.div`
   align-items: center;
   height: 4rem;
 
-  @media (min-width: 1280px) {
-    height: 3rem;
+  .noPointer {
+    pointer-events: none;
+  }
+
+  .closeArea {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
   }
 
   .imageContainer {
@@ -40,6 +49,14 @@ export const Container = styled.div`
       color: #fff;
       width: 50%;
 
+      hr.MuiDivider-root {
+        width: 95%;
+        align-self: center;
+        height: 0.1rem;
+        border-radius: 2px;
+        background-color: #fff;
+      }
+
       .drawerHeader {
         text-align: end;
         button span {
@@ -50,6 +67,8 @@ export const Container = styled.div`
 
       ul {
         font-size: 1.3rem;
+        display: flex;
+        flex-direction: column;
       }
     }
   }

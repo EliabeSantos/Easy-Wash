@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  /* max-width: 728px; */
   .address {
     /* width: 100vw; */
     /* background-color: lightblue; */
@@ -42,6 +43,7 @@ export const Container = styled.div`
       text-align: center;
       font-size: 1.5rem;
       border-bottom: 1px solid #aaa;
+      color: #333;
     }
     .productsList {
       width: 100%;
@@ -73,6 +75,90 @@ export const Container = styled.div`
     button {
       span {
         font-size: 1rem;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .gridContainer {
+      display: grid;
+      grid-template-columns: auto 30%;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "products address"
+        "products total";
+      height: calc(100vh - 2.5rem - 10px);
+
+      .address {
+        grid-area: address;
+        align-items: flex-start;
+
+        .imgContainer {
+          display: none;
+        }
+
+        .addressInfo {
+          h3,
+          p {
+            color: #333;
+            font-weight: 400;
+          }
+
+          h3 {
+            font-size: 2.5rem;
+            margin: 2rem 0;
+          }
+          p {
+            font-size: 2rem;
+          }
+        }
+      }
+
+      .productsContainer {
+        grid-area: products;
+        overflow: auto;
+        border-right: 2px solid #aaa;
+        .productTitle {
+          text-align: left;
+          border: none;
+          font-size: 2.5rem;
+          margin-left: 5rem;
+        }
+
+        .productsList {
+          align-items: flex-start;
+
+          div {
+            width: 50%;
+          }
+        }
+      }
+
+      .footer {
+        position: initial;
+        grid-area: total;
+        flex-direction: column;
+        align-self: flex-end;
+        height: 80%;
+        background-color: initial;
+
+        span.total {
+          color: #333;
+          font-size: 2.5rem;
+          display: flex;
+          width: 100%;
+          justify-content: space-around;
+        }
+
+        button {
+          width: 25rem;
+          height: 5rem;
+          margin-bottom: 10rem;
+
+          span {
+            font-size: 1.7rem;
+          }
+        }
       }
     }
   }
