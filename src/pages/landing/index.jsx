@@ -11,10 +11,10 @@ import {
   MainImageContainer,
   Img,
   Title,
-  WaveImg,
   ButtonsContainer,
-  WaveImg2,
   AllContentContainer,
+  Ocean,
+  Wave,
 } from "./style";
 
 const Landing = () => {
@@ -45,8 +45,10 @@ const Landing = () => {
             />
           </ButtonsContainer>
         </MainContainer>
-        <WaveImg src={waveImg}></WaveImg>
-        <WaveImg2 src={waveImg2}></WaveImg2>
+        <Ocean>
+          <Wave></Wave>
+          <Wave></Wave>
+        </Ocean>
       </AllContentContainer>
     </>
   );

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
   width: 100%;
-  height: 88vh;
+  height: 100%;
   max-width: 720px;
   @media (min-height: 600px) {
     display: flex;
@@ -13,9 +13,18 @@ export const MainContainer = styled.div`
 `;
 export const AllContentContainer = styled.div`
   width: 100%;
-  height: 88vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 254, 234, 1) 0%,
+    rgba(255, 254, 234, 1) 35%,
+    #b7e8eb 100%
+  );
+  overflow: hidden;
 `;
 export const TitleContainer = styled.div`
   width: 100%;
@@ -73,14 +82,6 @@ export const Img = styled.img`
   max-width: 300px;
   z-index: 1;
 
-  /* @media (min-width: 600px) {
-    width: 10rem;
-  } */
-
-  /* @media (max-height: 376px) {
-    width: 9rem;
-  } */
-
   @media (min-width: 1024px) {
     width: 19rem;
   }
@@ -100,28 +101,6 @@ export const Img = styled.img`
   }
   @media (min-height: 600px) {
     width: 50%;
-  }
-`;
-export const WaveImg = styled.img`
-  position: absolute;
-  bottom: 0;
-  z-index: 0;
-  width: 100%;
-  max-height: 80%;
-
-  @media (min-width: 600px) {
-    display: none;
-  }
-`;
-export const WaveImg2 = styled.img`
-  position: absolute;
-  bottom: 0;
-  z-index: 0;
-  width: 100%;
-  max-height: 80%;
-  /* display: none; */
-  @media (max-width: 600px) {
-    display: block;
   }
 `;
 export const ButtonsContainer = styled.div`
@@ -151,6 +130,50 @@ export const ButtonsContainer = styled.div`
     }
     @media (min-height: 600px) {
       height: 3rem;
+    }
+  }
+`;
+
+export const Ocean = styled.div`
+  min-height: 450px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+`;
+export const Wave = styled.div`
+  background: url(https://cdn.kcak11.com/codepen_assets/wave_animation/wave.svg)
+    repeat-x;
+  position: absolute;
+  bottom: 0;
+  width: 6400px;
+  height: 198px;
+  animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+
+  .wave:nth-of-type(2) {
+    bottom: 25px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite,
+      swell 7s ease -1.25s infinite;
+    opacity: 1;
+  }
+
+  @keyframes wave {
+    0% {
+      margin-left: 0;
+    }
+    100% {
+      margin-left: -1600px;
+    }
+  }
+  @keyframes swell {
+    0%,
+    100% {
+      transform: translate3d(0, -25px, 0);
+    }
+    50% {
+      transform: translate3d(0, 5px, 0);
     }
   }
 `;
