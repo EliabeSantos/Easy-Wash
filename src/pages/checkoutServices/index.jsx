@@ -4,9 +4,12 @@ import map from "./map.svg";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import CartCard from "../../components/cartCard";
+import DefaultButton from "../../components/sharedButton";
 
 const CheckoutServices = () => {
   const [addressInfo, setAddressInfo] = useState({});
+  const [paymentScreen, setPaymentScreen] = useState(false);
   const cart = JSON.parse(localStorage.getItem("cart"));
   const token = localStorage.getItem("authToken");
   const decoded = jwt_decode(token);
@@ -47,7 +50,26 @@ const CheckoutServices = () => {
       </div>
       <div className="productsContainer">
         <div className="productTitle">Meus produtos</div>
-        <div className="productsList"></div>
+        <div className="productsList">
+          {cart.products.map((product, index) => (
+            <CartCard key={index} title={product.title} value={product.price} />
+          ))}
+        </div>
+      </div>
+      <div className="footer">
+        <span className="total">
+          Total:{" "}
+          {Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(cart.total)}
+        </span>
+        <DefaultButton
+          name="Finalizar Pagamento"
+          width="15rem"
+          height="3.5rem"
+          _func={() => setPaymentScreen(true)}
+        />
       </div>
     </Container>
   );
