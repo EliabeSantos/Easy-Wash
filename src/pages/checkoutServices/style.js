@@ -41,6 +41,36 @@ export const Container = styled.div`
       padding: 2rem;
       text-align: center;
       font-size: 1.5rem;
+      border-bottom: 1px solid #aaa;
+    }
+    .productsList {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      /* background-color: lightblue; */
+    }
+  }
+
+  .footer {
+    background-color: var(--color-primary);
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+
+    span.total {
+      color: #fff;
+      font-size: 1.2rem;
+    }
+
+    button {
+      span {
+        font-size: 1rem;
+      }
     }
   }
 `;
