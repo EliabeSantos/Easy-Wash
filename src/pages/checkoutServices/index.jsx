@@ -29,6 +29,8 @@ const CheckoutServices = () => {
     }
   };
 
+  console.log(cart);
+
   useEffect(getDatasFromUser, []);
 
   const { street, number, district, city, UF } = addressInfo;
@@ -54,14 +56,20 @@ const CheckoutServices = () => {
         <div className="productsContainer">
           <div className="productTitle">Meus produtos</div>
           <div className="productsList">
-            {cart &&
+            {cart ? (
               cart.products.map((product, index) => (
                 <CartCard
                   key={index}
                   title={product.title}
                   value={product.price}
                 />
-              ))}
+              ))
+            ) : (
+              <div className="emptyCart">
+                <span>Carrinho está vazio</span>
+                <DefaultButton name="Voltar" _func={() => history.goBack()} />
+              </div>
+            )}
           </div>
         </div>
         <div className="footer">
@@ -74,14 +82,14 @@ const CheckoutServices = () => {
               }).format(cart ? cart.total : 0)}
             </span>
           </span>
-          <DefaultButton
-            name={cart ? "Finalizar Pagamento" : "Voltar"}
-            width="15rem"
-            height="3.5rem"
-            _func={() => {
-              cart ? setPaymentScreen(true) : history.goBack();
-            }}
-          />
+          {cart && (
+            <DefaultButton
+              name="Finalizar Pagamento"
+              width="15rem"
+              height="3.5rem"
+              _func={() => setPaymentScreen(true)}
+            />
+          )}
         </div>
       </div>
     </Container>

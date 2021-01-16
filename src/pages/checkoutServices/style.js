@@ -52,7 +52,28 @@ export const Container = styled.div`
       justify-content: center;
       align-items: center;
       padding: 10px 0;
-      /* background-color: lightblue; */
+
+      .emptyCart {
+        width: 100%;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        > span {
+          font-size: 1.5rem;
+          color: #333;
+          margin-bottom: 2rem;
+        }
+
+        button {
+          width: 10rem;
+          > span {
+            font-size: 1.4rem;
+          }
+        }
+      }
     }
   }
 
@@ -130,6 +151,15 @@ export const Container = styled.div`
 
           div {
             width: 50%;
+          }
+
+          .emptyCart {
+            width: calc(100vw - 50%);
+            height: 50vh;
+
+            > span {
+              font-size: 2rem;
+            }
           }
         }
       }
