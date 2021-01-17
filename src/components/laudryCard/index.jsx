@@ -63,8 +63,7 @@ const LaundryCard = ({
         <div className="laundryCard_content_price">
           <span>{`${schedule.initial}h - ${schedule.end}h`}</span>
           <span>
-            <FaMotorcycle />
-            R${deliveryFee}
+            <FaMotorcycle /> - R${deliveryFee}
           </span>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllThunk } from "../../store/modules/laundries/thunk";
 import Header from "../../components/header";
 import LaundryCard from "../../components/laudryCard";
-import { Container } from "./style";
+import { MainContainer, LaundryContainer } from "./style";
 
 const MainPage = () => {
   const [userCoordinates, setUserCoordinates] = useState({});
@@ -26,23 +26,26 @@ const MainPage = () => {
   return (
     <div>
       <Header />
-      <div>address here</div>
-      <Container>
-        {laundries.map((laundry) => {
-          return (
-            <LaundryCard
-              name={laundry.company}
-              score={laundry.score}
-              address={laundry.address}
-              schedule={laundry.schedule}
-              deliveryFee={laundry.deliveryfee}
-              src={`https://picsum.photos/200/3${parseInt(laundry.id) + 10}`}
-              id={laundry.id}
-              userCoordinates={userCoordinates}
-            />
-          );
-        })}
-      </Container>
+      <MainContainer>
+        address here
+        <LaundryContainer>
+          {laundries.map((laundry, index) => {
+            return (
+              <LaundryCard
+                key={index}
+                name={laundry.company}
+                score={laundry.score}
+                address={laundry.address}
+                schedule={laundry.schedule}
+                deliveryFee={laundry.deliveryfee}
+                src={`https://picsum.photos/200/3${parseInt(laundry.id) + 10}`}
+                id={laundry.id}
+                userCoordinates={userCoordinates}
+              />
+            );
+          })}
+        </LaundryContainer>
+      </MainContainer>
     </div>
   );
 };
