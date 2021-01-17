@@ -67,7 +67,7 @@ const LaundryCard = ({
         <div className="laundryCard_content_price">
           <span className="icon">
             <AiOutlineClockCircle /> &nbsp;
-            {`${schedule.initial}h - ${schedule.end}h`}
+            {`${schedule.initial} - ${schedule.end}`}
           </span>
           <span className="icon">
             <FaMotorcycle /> &nbsp; R${deliveryFee}
