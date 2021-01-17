@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 
 const LaundryCard = ({
   name,
-  score,
   address,
   schedule,
   deliveryFee,
@@ -15,14 +14,15 @@ const LaundryCard = ({
   id,
   userCoordinates,
 }) => {
+  const [score, _setScore] = useState(
+    ((Math.random() * 20) / 10 + 3).toFixed(1)
+  );
   const history = useHistory();
   const [distance, setDistance] = useState("Distância indisponível");
 
   const getCoordDistance = () => {
-    //const coord1 = { latitude: -25.403332, longitude: -49.258488 }; Para uso de testes
-    //const coord2 = { latitude: -25.415534, longitude: -49.255582 };
     try {
-      let coorddDistance = getDistance(address.coordinates, userCoordinates);
+      let coorddDistance = getDistance(address.coords, userCoordinates);
       coorddDistance = Math.round(coorddDistance / 100);
       coorddDistance = (coorddDistance / 10).toFixed(1);
       return coorddDistance;
@@ -60,8 +60,8 @@ const LaundryCard = ({
           <span>{distance ? `${distance}KM` : "Distância indisponível"}</span>
         </div>
         <div className="laundryCard_content_price">
-          <span>{schedule}</span>
-          <span>{deliveryFee}</span>
+          <span>{`${schedule.initial}h - ${schedule.end}h`}</span>
+          <span>R${deliveryFee}</span>
         </div>
       </div>
     </Container>
