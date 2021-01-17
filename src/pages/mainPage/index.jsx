@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllThunk } from "../../store/modules/laundries/thunk";
 import Header from "../../components/header";
 import LaundryCard from "../../components/laudryCard";
+import { Container } from "./style";
 
 const MainPage = () => {
   const [userCoordinates, setUserCoordinates] = useState({});
@@ -26,23 +27,22 @@ const MainPage = () => {
     <div>
       <Header />
       <div>address here</div>
-
-      {laundries.map((laundry) => {
-        console.log(laundry);
-
-        return (
-          <LaundryCard
-            name={laundry.company}
-            score={laundry.score}
-            address={laundry.address}
-            schedule={laundry.schedule}
-            deliveryFee={laundry.deliveryfee}
-            src={`https://picsum.photos/200/3${parseInt(laundry.id) + 10}`}
-            id={laundry.id}
-            userCoordinates={userCoordinates}
-          />
-        );
-      })}
+      <Container>
+        {laundries.map((laundry) => {
+          return (
+            <LaundryCard
+              name={laundry.company}
+              score={laundry.score}
+              address={laundry.address}
+              schedule={laundry.schedule}
+              deliveryFee={laundry.deliveryfee}
+              src={`https://picsum.photos/200/3${parseInt(laundry.id) + 10}`}
+              id={laundry.id}
+              userCoordinates={userCoordinates}
+            />
+          );
+        })}
+      </Container>
     </div>
   );
 };
