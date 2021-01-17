@@ -6,6 +6,8 @@ import LaundryCard from "../../components/laudryCard";
 import { MainContainer, LaundryContainer } from "./style";
 
 const MainPage = () => {
+  const [logged, setLogged] = useState(false);
+  const [user, setUser] = useState({});
   const [userCoordinates, setUserCoordinates] = useState({});
   const dispatch = useDispatch();
 
@@ -27,7 +29,11 @@ const MainPage = () => {
     <div>
       <Header />
       <MainContainer>
-        address here
+        {logged ? (
+          <p>{`${user.address.street}, ${user.address.number} - ${user.address.district}, ${user.address.city}`}</p>
+        ) : (
+          `faça o login para poder adicionar um endereço de coleta! `
+        )}
         <LaundryContainer>
           {laundries.map((laundry, index) => {
             return (
