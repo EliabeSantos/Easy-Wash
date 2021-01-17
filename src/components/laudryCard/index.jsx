@@ -2,7 +2,7 @@ import { getDistance } from "geolib";
 
 import { Container } from "./style";
 import { useHistory } from "react-router-dom";
-import { AiFillStar, AiFillClockCircle } from "react-icons/ai";
+import { AiFillStar, AiOutlineClockCircle } from "react-icons/ai";
 import { FaMotorcycle } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
@@ -66,7 +66,7 @@ const LaundryCard = ({
         </div>
         <div className="laundryCard_content_price">
           <span className="icon">
-            <AiFillClockCircle /> &nbsp;
+            <AiOutlineClockCircle /> &nbsp;
             {`${schedule.initial}h - ${schedule.end}h`}
           </span>
           <span className="icon">
