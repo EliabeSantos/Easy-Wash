@@ -2,7 +2,7 @@ import { getDistance } from "geolib";
 
 import { Container } from "./style";
 import { useHistory } from "react-router-dom";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineClockCircle } from "react-icons/ai";
 import { FaMotorcycle } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
@@ -58,12 +58,19 @@ const LaundryCard = ({
             {score}
             <AiFillStar />
           </span>
-          <span>{distance ? `${distance}KM` : "Distância indisponível"}</span>
+          <span>
+            {distance && !isNaN(distance)
+              ? `${distance}KM`
+              : "Distância indisponível"}
+          </span>
         </div>
         <div className="laundryCard_content_price">
-          <span>{`${schedule.initial}h - ${schedule.end}h`}</span>
-          <span>
-            <FaMotorcycle /> - R${deliveryFee}
+          <span className="icon">
+            <AiOutlineClockCircle /> &nbsp;
+            {`${schedule.initial}h - ${schedule.end}h`}
+          </span>
+          <span className="icon">
+            <FaMotorcycle /> &nbsp; R${deliveryFee}
           </span>
         </div>
       </div>
