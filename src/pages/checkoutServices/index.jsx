@@ -7,16 +7,18 @@ import { useEffect, useState } from "react";
 import CartCard from "../../components/cartCard";
 import DefaultButton from "../../components/sharedButton";
 import { useHistory } from "react-router-dom";
+import { useOpen } from "../../context/openModal";
+import CheckoutPayment from "../checkoutPayment";
 
 const CheckoutServices = () => {
+  const { open, setOpen } = useOpen();
   const history = useHistory();
   const [addressInfo, setAddressInfo] = useState({});
-  const [paymentScreen, setPaymentScreen] = useState(false);
   const cart = JSON.parse(localStorage.getItem("cart"));
   const token = localStorage.getItem("authToken");
   const decoded = jwt_decode(token);
   const id = decoded.sub;
-  //   console.log(id);
+  // console.log({ id });
 
   const getDatasFromUser = async () => {
     try {
@@ -31,7 +33,7 @@ const CheckoutServices = () => {
 
   console.log(cart);
 
-  useEffect(getDatasFromUser, []);
+  useEffect(() => getDatasFromUser(), [id]);
 
   const { street, number, district, city, UF } = addressInfo;
 
@@ -87,11 +89,12 @@ const CheckoutServices = () => {
               name="Finalizar Pagamento"
               width="15rem"
               height="3.5rem"
-              _func={() => setPaymentScreen(true)}
+              _func={() => setOpen(true)}
             />
           )}
         </div>
       </div>
+      {open && <CheckoutPayment />}
     </Container>
   );
 };
