@@ -6,10 +6,14 @@ import LaundryCard from "../../components/laudryCard";
 import { MainContainer, LaundryContainer } from "./style";
 import { Link } from "react-router-dom";
 import { BiMap } from "react-icons/bi";
+import { getUserThunk } from "../../store/modules/currentUser/thunk";
 const MainPage = () => {
   const dispatch = useDispatch();
 
   const [userCoordinates, setUserCoordinates] = useState({});
+
+  dispatch(getAllThunk());
+  dispatch(getUserThunk());
 
   const user = useSelector((state) => {
     return state.user;
@@ -17,22 +21,20 @@ const MainPage = () => {
   const [logged, setLogged] = useState(
     JSON.stringify(user) === "{}" ? false : true
   );
-  useEffect(() => {
-    setLogged(JSON.stringify(user) === "{}" ? false : true);
-  }, [user]);
 
-  dispatch(getAllThunk());
   const laundries = useSelector((state) => {
     return state.laundries;
   });
+
   useEffect(() => {
+    setLogged(JSON.stringify(user) === "{}" ? false : true);
     navigator.geolocation.getCurrentPosition((position) =>
       setUserCoordinates({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
       })
     );
-  }, []);
+  }, [user, laundries]);
   return (
     <div>
       <Header />
