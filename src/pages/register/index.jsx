@@ -2,7 +2,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Header from "../../components/header";
 import CepCoords from "coordenadas-do-cep";
 import axios from "axios";
@@ -13,7 +13,8 @@ import { Form, Container, Title, OuterContainer } from "./style.js";
 
 const Register = () => {
   const { type } = useParams();
-  console.log(type);
+  const history = useHistory();
+
   const [cep, setCep] = useState("");
   const [street, setStreet] = useState("");
   const [district, setDistrict] = useState("");
@@ -21,15 +22,14 @@ const Register = () => {
   const [uf, setUF] = useState("");
   const [coords, setCoords] = useState({});
 
-  const [showRadius, setShowRadius] = useState(type === "PJ" ? true : false);
+  const [errorMessage, setErrorMessage] = useState();
 
-  const [showDeliveryfee, setShowDeliveryfee] = useState(
+  const [showRadius, _setShowRadius] = useState(type === "PJ" ? true : false);
+  const [showDeliveryfee, _setShowDeliveryfee] = useState(
     type === "PJ" ? true : false
   );
-
-  const [showInitial, setShowInitial] = useState(type === "PJ" ? true : false);
-
-  const [showEnd, setShowEnd] = useState(type === "PJ" ? true : false);
+  const [showInitial, _setShowInitial] = useState(type === "PJ" ? true : false);
+  const [showEnd, _setShowEnd] = useState(type === "PJ" ? true : false);
 
   const autoCompleteAddress = async () => {
     if (cep.length === 8) {
@@ -40,7 +40,9 @@ const Register = () => {
         setCity(data.localidade);
         setUF(data.uf);
         setCoords({ latitude: data.lat, longitude: data.lon });
-      } catch (err) {}
+      } catch (err) {
+        setErrorMessage("Não foi possível concluir o seu cadastro");
+      }
     }
   };
 
@@ -126,7 +128,20 @@ const Register = () => {
   const { register, errors, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
-
+  const login = async (formattedObject) => {
+    try {
+      const token = await axios.post(
+        "https://easy-wash-server.herokuapp.com/register",
+        formattedObject
+      );
+      localStorage.setItem("authToken", token);
+      if (localStorage.getItem("authToken")) {
+        history.push("/main-page");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const handleFormSubmit = (data) => {
     const formattedObject = {
       email: data.email,
@@ -151,10 +166,8 @@ const Register = () => {
       },
       services: [],
     };
-    axios.post(
-      "https://easy-wash-server.herokuapp.com/register",
-      formattedObject
-    );
+
+    login(formattedObject);
   };
 
   return (
@@ -380,6 +393,7 @@ const Register = () => {
             width="15rem"
             height="3rem"
           />
+          {errorMessage && <p style={{ color: "#740c0c" }}>{errorMessage}</p>}
         </Form>
       </Container>
     </OuterContainer>
