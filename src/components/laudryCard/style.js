@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
 
-  margin: 0.5rem auto;
+  margin: 2rem auto;
   padding: 1rem;
 
   width: 34rem;
@@ -12,6 +12,10 @@ export const Container = styled.div`
   box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.25);
 
   border-radius: 5px;
+  .icon {
+    display: flex;
+    align-items: center;
+  }
   .laundryCard_image_container {
     height: 100%;
     width: 25%;
