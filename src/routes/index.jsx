@@ -4,7 +4,7 @@ import Login from "../pages/login";
 import CheckoutServices from "../pages/checkoutServices";
 import ServiceList from "../pages/servicesList";
 import Register from "../pages/register";
-
+import  RegisterType from "../pages/registerType";
 const Routes = () => {
   return (
     <>
@@ -14,6 +14,7 @@ const Routes = () => {
         <Route exact path="/checkout" component={CheckoutServices} />
         <Route exact path="/services/:id" component={ServiceList} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/registertype" component={RegisterType} />
         {/*
         <Route exact path="/profile/client" component={} />
         <Route exact path="/profile/client/edit" component={} />
