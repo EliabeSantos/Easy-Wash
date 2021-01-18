@@ -7,8 +7,9 @@ import { MainContainer, LaundryContainer } from "./style";
 import { Link } from "react-router-dom";
 import { BiMap } from "react-icons/bi";
 const MainPage = () => {
-  const [userCoordinates, setUserCoordinates] = useState({});
   const dispatch = useDispatch();
+
+  const [userCoordinates, setUserCoordinates] = useState({});
 
   const user = useSelector((state) => {
     return state.user;
@@ -16,22 +17,22 @@ const MainPage = () => {
   const [logged, setLogged] = useState(
     JSON.stringify(user) === "{}" ? false : true
   );
+  useEffect(() => {
+    setLogged(JSON.stringify(user) === "{}" ? false : true);
+  }, [user]);
 
   dispatch(getAllThunk());
-
   const laundries = useSelector((state) => {
     return state.laundries;
   });
-
   useEffect(() => {
-    setLogged(JSON.stringify(user) === "{}" ? false : true);
     navigator.geolocation.getCurrentPosition((position) =>
       setUserCoordinates({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
       })
     );
-  }, [user]);
+  }, []);
   return (
     <div>
       <Header />
