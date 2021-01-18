@@ -5,7 +5,7 @@ import Header from "../../components/header";
 import LaundryCard from "../../components/laudryCard";
 import { MainContainer, LaundryContainer } from "./style";
 import { Link } from "react-router-dom";
-
+import { BiMap } from "react-icons/bi";
 const MainPage = () => {
   const [userCoordinates, setUserCoordinates] = useState({});
   const dispatch = useDispatch();
@@ -13,7 +13,9 @@ const MainPage = () => {
   const user = useSelector((state) => {
     return state.user;
   });
-  const logged = JSON.stringify(user) === "{}" ? false : true;
+  const [logged, setLogged] = useState(
+    JSON.stringify(user) === "{}" ? false : true
+  );
 
   dispatch(getAllThunk());
 
@@ -22,24 +24,31 @@ const MainPage = () => {
   });
 
   useEffect(() => {
+    setLogged(JSON.stringify(user) === "{}" ? false : true);
     navigator.geolocation.getCurrentPosition((position) =>
       setUserCoordinates({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
       })
     );
-  }, []);
+  }, [user]);
   return (
     <div>
       <Header />
       <MainContainer>
-        {logged ? (
-          <p>{`${user.address.street}, ${user.address.number} - ${user.address.district}, ${user.address.city}`}</p>
-        ) : (
-          `faça o ${(
-            <Link to="/login">login</Link>
-          )} para poder adicionar um endereço de coleta! `
-        )}
+        <div className="addressContainer">
+          {logged ? (
+            <p>
+              <BiMap /> &nbsp;
+              {`${user.address.street}, ${user.address.number} - ${user.address.district}, ${user.address.city}`}
+            </p>
+          ) : (
+            <p>
+              faça o {<Link to="/login">login</Link>} para poder adicionar um
+              endereço de coleta!
+            </p>
+          )}
+        </div>
         <LaundryContainer>
           {laundries.map((laundry, index) => {
             return (
