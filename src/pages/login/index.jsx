@@ -35,7 +35,7 @@ const Login = () => {
   });
 
   const handleForm = (data) => {
-    RequestApi(data);  
+    RequestApi(data);
   };
 
   const RequestApi = (data) => {
@@ -51,8 +51,8 @@ const Login = () => {
           history.push("/Mainpage");
         }
       })
-      .catch((error)=> {
-        setError("password", { message: "Senha ou usuário inválido" })
+      .catch((error) => {
+        setError("password", { message: "Senha ou usuário inválido" });
       });
   };
 
