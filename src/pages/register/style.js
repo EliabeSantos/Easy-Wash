@@ -22,6 +22,10 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   align-content: center;
+
+  .invisible {
+    display: none;
+  }
 `;
 
 export const Form = styled.form`
