@@ -11,3 +11,10 @@ export const addToCartThunk = (product) => (dispatch, _) => {
   localStorage.setItem("cart", JSON.stringify(cart));
   dispatch(addToCart(cart));
 };
+
+export const resetCartThunk = () => (dispatch, _) => {
+  localStorage.removeItem("cart");
+  cart.products = [];
+  cart.total = 0;
+  dispatch(addToCart(cart));
+};
