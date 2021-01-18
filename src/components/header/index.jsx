@@ -15,14 +15,23 @@ import { FiChevronLeft } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
 
 const Header = () => {
+  const [onDesktop, setOnDesktop] = useState(false);
   const [open, setOpen] = useState(false);
   const auth = localStorage.getItem("authToken");
   const history = useHistory();
   const handleMenu = () => {
     setOpen(true);
   };
+
+  console.log(onDesktop);
   return (
     <Container>
+      <div
+        className={`closeArea ${!open && "noPointer"}`}
+        onClick={() => {
+          open && setOpen(false);
+        }}
+      ></div>
       <div className="menuContainer">
         <Button
           aria-controls="header-menu"
@@ -37,7 +46,7 @@ const Header = () => {
               <FiChevronLeft />
             </IconButton>
           </div>
-          {/* <Divider /> */}
+          <Divider />
           <List>
             <ListItem
               button
@@ -45,9 +54,20 @@ const Header = () => {
                 auth ? history.push("/profile") : history.push("/login")
               }
             >
-              {auth ? "Perfil" : "Login"}
+              {auth ? "Perfil" : "Entrar"}
             </ListItem>
-            <ListItem button>Lavandersons</ListItem>
+            <ListItem button onClick={() => history.push("/register")}>
+              {auth ? "Novo Registro" : "Registre-se"}
+            </ListItem>
+            <Divider />
+            <ListItem button onClick={() => history.push("/main-page")}>
+              Lavanderias
+            </ListItem>
+            {auth && (
+              <ListItem button onClick={() => history.push("/checkout")}>
+                Ver Carrinho
+              </ListItem>
+            )}
           </List>
         </Drawer>
       </div>

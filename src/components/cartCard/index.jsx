@@ -20,7 +20,7 @@ const CartCard = ({ title, value }) => {
         </ImgContainer>
         <InfoContainer>
           <Title>{title}</Title>
-          <Value>{value}</Value>
+          <Value>R$ {value}</Value>
         </InfoContainer>
       </MainContainer>
     </>
