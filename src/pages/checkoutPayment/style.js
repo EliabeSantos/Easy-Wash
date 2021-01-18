@@ -17,6 +17,7 @@ export const Container = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      align-items: center;
     }
 
     label .MuiTypography-root > img {
@@ -24,14 +25,20 @@ export const Container = styled.div`
     }
   }
 
+  button {
+    font-size: 1.4rem;
+    width: 15rem;
+  }
+
   .finish {
     display: block;
     background-color: #adffad;
     color: #005200;
     font-size: 1.3rem;
-    margin-top: 5rem;
+    margin: 3rem auto 0;
     padding: 1rem 0 0;
     border-radius: 5px;
+    width: 15rem;
 
     .line {
       margin-top: 1rem;
@@ -51,6 +58,25 @@ export const Container = styled.div`
     }
     to {
       width: 10%;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    h1 {
+      font-size: 3rem;
+    }
+
+    fieldset {
+      /* background-color: lightcoral; */
+      height: 40vh;
+      .MuiFormGroup-root {
+        /* background-color: lightblue; */
+        flex-direction: row;
+      }
+    }
+
+    .finish {
+      margin: 5rem auto 0;
     }
   }
 `;
