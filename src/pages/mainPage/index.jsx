@@ -4,12 +4,16 @@ import { getAllThunk } from "../../store/modules/laundries/thunk";
 import Header from "../../components/header";
 import LaundryCard from "../../components/laudryCard";
 import { MainContainer, LaundryContainer } from "./style";
+import { Link } from "react-router-dom";
 
 const MainPage = () => {
-  const [logged, setLogged] = useState(false);
-  const [user, setUser] = useState({});
   const [userCoordinates, setUserCoordinates] = useState({});
   const dispatch = useDispatch();
+
+  const user = useSelector((state) => {
+    return state.user;
+  });
+  const logged = JSON.stringify(user) === "{}" ? false : true;
 
   dispatch(getAllThunk());
 
@@ -32,7 +36,9 @@ const MainPage = () => {
         {logged ? (
           <p>{`${user.address.street}, ${user.address.number} - ${user.address.district}, ${user.address.city}`}</p>
         ) : (
-          `faça o login para poder adicionar um endereço de coleta! `
+          `faça o ${(
+            <Link to="/login">login</Link>
+          )} para poder adicionar um endereço de coleta! `
         )}
         <LaundryContainer>
           {laundries.map((laundry, index) => {
