@@ -4,7 +4,7 @@ export const ModalElement = styled.div`
   width: 30rem !important;
   height: 62.5rem !important;
   width: 70% !important;
-  height: 80% !important;
+  height: 90vh !important;
   background-color: #fff;
   position: fixed;
   top: 0;
@@ -43,4 +43,7 @@ export const ContentContainerModal = styled.div`
   margin: auto;
   /* background-color: azure; */
   text-align: center;
+  .div {
+    width: 100%;
+  }
 `;

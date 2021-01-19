@@ -12,13 +12,16 @@ function SharedInput({
   _helperText,
   value,
   _onChange,
+  id,
+  margin,
 }) {
   return (
     <>
       <SharedInputElement
+        id={id}
         width={width}
         height={height}
-        margin="normal"
+        margin={margin}
         label={label}
         variant="outlined"
         name={name}
