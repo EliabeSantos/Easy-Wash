@@ -10,10 +10,13 @@ export const MainContainer = styled.div`
     align-items: center;
     justify-content: space-between;
   }
+  @media (min-height: 800px) {
+    height: 70%;
+  }
 `;
 export const AllContentContainer = styled.div`
   width: 100%;
-  height: 90vh;
+  min-height: calc(100vh - 4rem);
   display: flex;
   justify-content: center;
   overflow-y: hidden;
@@ -24,6 +27,12 @@ export const AllContentContainer = styled.div`
     rgba(255, 254, 234, 1) 35%,
     #b7e8eb 100%
   );
+  @media (min-height: 800px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   overflow: hidden;
 `;
 export const TitleContainer = styled.div`
@@ -99,9 +108,9 @@ export const Img = styled.img`
   @media (min-height: 550px) {
     width: 12rem;
   }
-  @media (min-height: 600px) {
-    width: 50%;
-  }
+  /* @media (min-height: 600px) {
+    width: 45%;
+  } */
 `;
 export const ButtonsContainer = styled.div`
   width: 100%;
@@ -158,7 +167,9 @@ export const Wave = styled.div`
       swell 7s ease -1.25s infinite;
     opacity: 1;
   }
-
+  @media (max-height: 449px) {
+    height: 100px;
+  }
   @keyframes wave {
     0% {
       margin-left: 0;
