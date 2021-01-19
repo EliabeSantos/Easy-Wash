@@ -55,7 +55,7 @@ const Header = () => {
             >
               {auth ? "Perfil" : "Entrar"}
             </ListItem>
-            <ListItem button onClick={() => history.push("/register")}>
+            <ListItem button onClick={() => history.push("/registerType")}>
               {auth ? "Novo Registro" : "Registre-se"}
             </ListItem>
             <Divider />
