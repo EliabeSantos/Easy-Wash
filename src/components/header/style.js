@@ -9,10 +9,15 @@ export const Container = styled.div`
 
   .noPointer {
     pointer-events: none;
+    /* background-color: #00000000; */
+  }
+
+  .isOpen {
+    background-color: #00000088;
   }
 
   .closeArea {
-    position: absolute;
+    position: fixed;
     z-index: 4;
     top: 0;
     left: 0;
@@ -75,6 +80,8 @@ export const Container = styled.div`
 
   @media (min-width: 1280px) {
     height: 3rem;
+    /* flex-direction: row-reverse;
+    justify-content: flex-end; */
 
     .imageContainer {
       height: 2.5rem;
