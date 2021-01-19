@@ -1,5 +1,5 @@
 import Header from "../../components/header";
-import { ContainerRegisterType, ContainerInput } from "./style";
+import { ContainerRegisterType, ContainerInput, Ocean, Wave } from "./style";
 import DefaultButton from "../../components/sharedButton";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
@@ -16,7 +16,7 @@ const RegisterType = () => {
   const [value, setValue] = useState("PF");
   const [aviso, setAviso] = useState(false);
 
-  console.log(value)
+  console.log(value);
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -24,8 +24,8 @@ const RegisterType = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(value === ""){
-      setAviso(!aviso)
+    if (value === "") {
+      setAviso(!aviso);
     }
     if (value === "PF") {
       history.push("/register/PF");
@@ -38,22 +38,32 @@ const RegisterType = () => {
     <>
       <Header />
       <ContainerRegisterType>
-      <h2>Como deseja se Cadastrar ?</h2>
+        <h2>Como deseja se Cadastrar ?</h2>
         <FormControl component="fieldset">
-        
           <RadioGroup
             aria-label="gender"
             name="gender1"
             value={value}
             onChange={handleChange}
           >
-            <FormControlLabel value="PF" control={<Radio className="teste"/>} label="Registrar como cliente" />
-            <FormControlLabel value="PJ" control={<Radio />} label="Registrar como Lavanderia" />
+            <FormControlLabel
+              value="PF"
+              control={<Radio className="teste" />}
+              label="Registrar como cliente"
+            />
+            <FormControlLabel
+              value="PJ"
+              control={<Radio />}
+              label="Registrar como Lavanderia"
+            />
           </RadioGroup>
-        <DefaultButton name="Continuar" _func={handleSubmit} />
+          <DefaultButton name="Continuar" _func={handleSubmit} />
         </FormControl>
-      
       </ContainerRegisterType>
+      <Ocean>
+        <Wave></Wave>
+        <Wave></Wave>
+      </Ocean>
     </>
   );
 };
