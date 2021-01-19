@@ -43,6 +43,7 @@ const LaundryCard = ({
   };
   return (
     <Container
+      data-testid="LaundryCard"
       src={src}
       className="laundryCard_container"
       onClick={handleGoToLaundry}
