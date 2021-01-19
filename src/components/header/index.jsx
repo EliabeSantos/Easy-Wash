@@ -15,15 +15,12 @@ import { FiChevronLeft } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
 
 const Header = () => {
+  // const [onDesktop, setOnDesktop] = useState(false);
   const [open, setOpen] = useState(false);
   const auth = localStorage.getItem("authToken");
   const history = useHistory();
   const handleMenu = () => {
     setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
   };
 
   return (
@@ -58,7 +55,7 @@ const Header = () => {
             >
               {auth ? "Perfil" : "Entrar"}
             </ListItem>
-            <ListItem button onClick={() => history.push("/register")}>
+            <ListItem button onClick={() => history.push("/registerType")}>
               {auth ? "Novo Registro" : "Registre-se"}
             </ListItem>
             <Divider />
@@ -66,9 +63,20 @@ const Header = () => {
               Lavanderias
             </ListItem>
             {auth && (
-              <ListItem button onClick={() => history.push("/checkout")}>
-                Ver Carrinho
-              </ListItem>
+              <>
+                <ListItem button onClick={() => history.push("/checkout")}>
+                  Ver Carrinho
+                </ListItem>
+                <ListItem
+                  button
+                  onClick={() => {
+                    localStorage.removeItem("authToken");
+                    history.push("/");
+                  }}
+                >
+                  Logout
+                </ListItem>
+              </>
             )}
           </List>
         </Drawer>

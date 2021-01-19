@@ -18,7 +18,7 @@ const CheckoutServices = () => {
   const token = localStorage.getItem("authToken");
   const decoded = jwt_decode(token);
   const id = decoded.sub;
-  //   console.log(id);
+  // console.log({ id });
 
   const getDatasFromUser = async () => {
     try {

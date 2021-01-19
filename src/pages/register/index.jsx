@@ -2,6 +2,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import Header from "../../components/header";
 import CepCoords from "coordenadas-do-cep";
 import axios from "axios";
@@ -10,13 +11,25 @@ import SharedButton from "../../components/sharedButton";
 
 import { Form, Container, Title, OuterContainer } from "./style.js";
 
-const Register = ({ type }) => {
+const Register = () => {
+  const { type } = useParams();
+  const history = useHistory();
+
   const [cep, setCep] = useState("");
   const [street, setStreet] = useState("");
   const [district, setDistrict] = useState("");
   const [city, setCity] = useState("");
   const [uf, setUF] = useState("");
   const [coords, setCoords] = useState({});
+
+  const [errorMessage, setErrorMessage] = useState();
+
+  const [showRadius, _setShowRadius] = useState(type === "PJ" ? true : false);
+  const [showDeliveryfee, _setShowDeliveryfee] = useState(
+    type === "PJ" ? true : false
+  );
+  const [showInitial, _setShowInitial] = useState(type === "PJ" ? true : false);
+  const [showEnd, _setShowEnd] = useState(type === "PJ" ? true : false);
 
   const autoCompleteAddress = async () => {
     if (cep.length === 8) {
@@ -27,7 +40,9 @@ const Register = ({ type }) => {
         setCity(data.localidade);
         setUF(data.uf);
         setCoords({ latitude: data.lat, longitude: data.lon });
-      } catch (err) {}
+      } catch (err) {
+        setErrorMessage("Não foi possível concluir o seu cadastro");
+      }
     }
   };
 
@@ -67,17 +82,39 @@ const Register = ({ type }) => {
       .string("Apenas letras")
       .required("Campo obrigatório")
       .length(2, "Apenas dois caracteres"),
+    showRadius: yup.boolean(),
     radius: yup
       .number()
-      .required("Campo obrigatório")
       .typeError("Apenas números")
-      .integer("Apenas números inteiros"),
+      .when("showRadius", {
+        is: true,
+        then: yup
+          .number()
+          .required("Campo obrigatório")
+          .typeError("Apenas números")
+          .integer("Apenas números inteiros"),
+      }),
+    showDeliveryfee: yup.boolean(),
     deliveryfee: yup
       .number()
-      .required("Campo obrigatório")
-      .typeError("Apenas números"),
-    initial: yup.string().required("Campo obrigatório"),
-    end: yup.string().required("Campo obrigatório"),
+      .typeError("Apenas números")
+      .when("showDeliveryfee", {
+        is: true,
+        then: yup
+          .number()
+          .typeError("Apenas números")
+          .required("Campo obrigatório"),
+      }),
+    showInitial: yup.boolean(),
+    initial: yup.string().when("showInitial", {
+      is: true,
+      then: yup.string().required("Campo obrigatório"),
+    }),
+    showEnd: yup.boolean(),
+    end: yup.string().when("showEnd", {
+      is: true,
+      then: yup.string().required("Campo obrigatório"),
+    }),
   });
 
   useEffect(() => {
@@ -91,13 +128,26 @@ const Register = ({ type }) => {
   const { register, errors, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
-
+  const login = async (formattedObject) => {
+    try {
+      const token = await axios.post(
+        "https://easy-wash-server.herokuapp.com/register",
+        formattedObject
+      );
+      localStorage.setItem("authToken", token);
+      if (localStorage.getItem("authToken")) {
+        history.push("/main-page");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const handleFormSubmit = (data) => {
     const formattedObject = {
       email: data.email,
       password: data.password,
       company: data.name,
-      type: "PJ",
+      type: type,
       phone: data.phone,
       address: {
         zipcode: cep,
@@ -116,10 +166,8 @@ const Register = ({ type }) => {
       },
       services: [],
     };
-    axios.post(
-      "https://easy-wash-server.herokuapp.com/register",
-      formattedObject
-    );
+
+    login(formattedObject);
   };
 
   return (
@@ -262,55 +310,81 @@ const Register = ({ type }) => {
               />
             </div>
           </div>
+          {type === "PJ" && (
+            <div className="container_service_info">
+              <input
+                className="invisible"
+                value={showRadius}
+                name="showRadius"
+                _inputRef={register}
+              />
+              <input
+                className="invisible"
+                value={showDeliveryfee}
+                name="showDeliveryfee"
+                _inputRef={register}
+              />
+              <input
+                className="invisible"
+                value={showInitial}
+                name="showInitial"
+                _inputRef={register}
+              />
+              <input
+                className="invisible"
+                value={showEnd}
+                name="showEnd"
+                _inputRef={register}
+              />
 
-          <div className="container_service_info">
-            <h2 className="section_title">Informações de serviço</h2>
-            <div className="single_liner double_liner">
-              <SharedInput
-                label="Area de serviço (KM)"
-                name="radius"
-                _inputRef={register}
-                width="15rem"
-                _helperText={errors.radius?.message}
-                _error={!!errors.radius}
-                _type="number"
-                _min="0"
-              />
-              <SharedInput
-                label="Valor do frete"
-                name="deliveryfee"
-                _inputRef={register}
-                width="15rem"
-                _helperText={errors.deliveryfee?.message}
-                _error={!!errors.deliveryfee}
-                _type="number"
-                _min="0"
-              />
+              <h2 className="section_title">Informações de serviço</h2>
+              <div className="single_liner double_liner">
+                <SharedInput
+                  label="Area de serviço (KM)"
+                  name="radius"
+                  _inputRef={register}
+                  width="15rem"
+                  _helperText={errors.radius?.message}
+                  _error={!!errors.radius}
+                  _type="number"
+                  _min="0"
+                />
+                <SharedInput
+                  label="Valor do frete"
+                  name="deliveryfee"
+                  _inputRef={register}
+                  width="15rem"
+                  _helperText={errors.deliveryfee?.message}
+                  _error={!!errors.deliveryfee}
+                  _type="number"
+                  _min="0"
+                />
+              </div>
+              <h3 className="section_subtitle">Horario de atendimento</h3>
+              <div className="single_liner double_liner">
+                <SharedInput
+                  label="Inicio"
+                  name="initial"
+                  _inputRef={register}
+                  width="15rem"
+                  _helperText={errors.initial?.message}
+                  _error={!!errors.initial}
+                  _type="time"
+                  _defaultValue="07:30"
+                />
+                <SharedInput
+                  label="Fim"
+                  name="end"
+                  _inputRef={register}
+                  width="15rem"
+                  _helperText={errors.end?.message}
+                  _error={!!errors.end}
+                  _type="time"
+                  _defaultValue="18:30"
+                />
+              </div>
             </div>
-            <h3 className="section_subtitle">Horario de atendimento</h3>
-            <div className="single_liner double_liner">
-              <SharedInput
-                label="Inicio"
-                name="initial"
-                _inputRef={register}
-                width="15rem"
-                _helperText={errors.initial?.message}
-                _error={!!errors.initial}
-                _type="time"
-                _defaultValue="07:30"
-              />
-              <SharedInput
-                label="Fim"
-                name="end"
-                _inputRef={register}
-                width="15rem"
-                _helperText={errors.end?.message}
-                _error={!!errors.end}
-                _type="time"
-                _defaultValue="18:30"
-              />
-            </div>
-          </div>
+          )}
 
           <SharedButton
             type="submit"
@@ -319,6 +393,7 @@ const Register = ({ type }) => {
             width="15rem"
             height="3rem"
           />
+          {errorMessage && <p style={{ color: "#740c0c" }}>{errorMessage}</p>}
         </Form>
       </Container>
     </OuterContainer>

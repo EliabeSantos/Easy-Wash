@@ -23,7 +23,7 @@ const Login = () => {
   const history = useHistory();
 
   if (localStorage.authToken) {
-    history.push("/Mainpage");
+    history.push("/main-page");
   }
   const schema = yup.object({
     email: yup.string().email("Tipo inválido").required("Campo obrigatório"),
@@ -48,7 +48,7 @@ const Login = () => {
         const { accessToken } = response.data;
         localStorage.setItem("authToken", accessToken);
         if (localStorage.getItem("authToken")) {
-          history.push("/Mainpage");
+          history.push("/main-page");
         }
       })
       .catch((error) => {

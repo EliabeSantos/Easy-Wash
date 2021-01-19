@@ -75,6 +75,8 @@ export const Container = styled.div`
 
   @media (min-width: 1280px) {
     height: 3rem;
+    /* flex-direction: row-reverse;
+    justify-content: flex-end; */
 
     .imageContainer {
       height: 2.5rem;
