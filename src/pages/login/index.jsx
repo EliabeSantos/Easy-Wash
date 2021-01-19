@@ -73,6 +73,7 @@ const Login = () => {
               name="email"
               _inputRef={register}
               error={!!errors.email}
+              _id="email"
             />
             {errors.email && <p type="warning">{errors.email.message}</p>}
 
@@ -82,11 +83,12 @@ const Login = () => {
               type="password"
               error={!!errors.password}
               _inputRef={register}
+              _id="password"
             />
             {errors.password && <p type="warning">{errors.password.message}</p>}
 
             <ButtonContainer>
-              <DefaultButton name="Entrar" type="submit" />
+              <DefaultButton data-testid='button' name="Entrar" type="submit" />
             </ButtonContainer>
           </Form>
         </ContainerForm>
