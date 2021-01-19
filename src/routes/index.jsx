@@ -16,7 +16,7 @@ const Routes = () => {
         <Route exact path="/services/:id" component={ServiceList} />
         <Route exact path="/register/type" component={Register} />
         <Route exact path="/main-page" component={MainPage} />
-        <Route exact path="/registertype" component={RegisterType} />
+        <Route exact path="/register/:type" component={RegisterType} />
         {/*
         <Route exact path="/profile/client" component={} />
         <Route exact path="/profile/client/edit" component={} />
