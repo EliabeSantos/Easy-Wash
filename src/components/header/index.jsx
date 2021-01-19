@@ -1,23 +1,36 @@
 import { Container } from "./style";
-import { Menu, MenuItem, Button } from "@material-ui/core";
+import {
+  Button,
+  Drawer,
+  List,
+  IconButton,
+  Divider,
+  ListItem,
+} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "./logo.svg";
+import { FiChevronLeft } from "react-icons/fi";
+import { useHistory } from "react-router-dom";
 
-const Header = ({ isAuth }) => {
-  const [anchorEl, setAnchorEl] = useState(false);
-
+const Header = () => {
+  // const [onDesktop, setOnDesktop] = useState(false);
+  const [open, setOpen] = useState(false);
+  const auth = localStorage.getItem("authToken");
+  const history = useHistory();
   const handleMenu = () => {
-    setAnchorEl(!anchorEl);
+    setOpen(true);
   };
+
   return (
     <Container>
-      <div className="imageContainer">
-        <Link to="/">
-          <img src="https://picsum.photos/200" alt="Logo" />
-        </Link>
-      </div>
-
+      <div
+        className={`closeArea ${!open && "noPointer"}`}
+        onClick={() => {
+          open && setOpen(false);
+        }}
+      ></div>
       <div className="menuContainer">
         <Button
           aria-controls="header-menu"
@@ -26,20 +39,53 @@ const Header = ({ isAuth }) => {
         >
           <MenuIcon />
         </Button>
-        <Menu
-          id="header-menu"
-          anchorEl={anchorEl}
-          open={anchorEl}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}
-        >
-          <MenuItem onClick={handleMenu}>
-            {isAuth ? "Perfil" : "Login"}
-          </MenuItem>
-          <MenuItem onClick={handleMenu}>Lavandersons</MenuItem>
-        </Menu>
+        <Drawer variant="persistent" anchor="left" open={open}>
+          <div className="drawerHeader">
+            <IconButton onClick={() => setOpen(false)}>
+              <FiChevronLeft />
+            </IconButton>
+          </div>
+          <Divider />
+          <List>
+            <ListItem
+              button
+              onClick={() =>
+                auth ? history.push("/profile") : history.push("/login")
+              }
+            >
+              {auth ? "Perfil" : "Entrar"}
+            </ListItem>
+            <ListItem button onClick={() => history.push("/registerType")}>
+              {auth ? "Novo Registro" : "Registre-se"}
+            </ListItem>
+            <Divider />
+            <ListItem button onClick={() => history.push("/main-page")}>
+              Lavanderias
+            </ListItem>
+            {auth && (
+              <>
+                <ListItem button onClick={() => history.push("/checkout")}>
+                  Ver Carrinho
+                </ListItem>
+                <ListItem
+                  button
+                  onClick={() => {
+                    localStorage.removeItem("authToken");
+                    history.push("/");
+                  }}
+                >
+                  Logout
+                </ListItem>
+              </>
+            )}
+          </List>
+        </Drawer>
+      </div>
+
+      <div className="imageContainer">
+        <Link to="/">
+          <img src={logo} alt="Logo" />
+        </Link>
       </div>
     </Container>
   );
