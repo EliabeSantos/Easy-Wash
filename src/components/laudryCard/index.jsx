@@ -39,7 +39,7 @@ const LaundryCard = ({
   }, []);
 
   const handleGoToLaundry = () => {
-    history.push(`/laundry/${id}`);
+    history.push(`/services/${id}`);
   };
   return (
     <Container
