@@ -12,7 +12,7 @@ export const MainContainer = styled.div`
   display: flex;
   flex-direction: row;
 
-  margin: 1rem;
+  margin: 2rem;
   @media (min-width: 450px) {
     width: 36rem;
   }
