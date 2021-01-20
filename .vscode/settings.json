@@ -4,7 +4,11 @@
     "node_modules": true,
     ".vscode": false,
     ".gitignore": true,
+<<<<<<< HEAD
     "package.json": true,
+=======
+    "package.json": false,
+>>>>>>> c4e2d02fc3e64873de6b082f9212f06ae5b52d57
     "package-lock.json": true,
     "public": false,
     "react_app_readme.md": true,

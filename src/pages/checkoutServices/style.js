@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  /* max-width: 728px; */
+  max-width: 920px;
+  margin: 0 auto;
   .address {
     /* width: 100vw; */
     /* background-color: lightblue; */
@@ -79,13 +80,14 @@ export const Container = styled.div`
 
   .footer {
     background-color: var(--color-primary);
-    height: 4rem;
+    height: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
     position: fixed;
     bottom: 0;
+    left: 0;
     width: calc(100% - 10px);
 
     span.total {
@@ -149,13 +151,11 @@ export const Container = styled.div`
         .productsList {
           align-items: flex-start;
 
-          div {
-            width: 50%;
-          }
-
           .emptyCart {
-            width: calc(100vw - 50%);
+            width: 50%;
             height: 50vh;
+            align-self: flex-start;
+            padding-left: 4rem;
 
             > span {
               font-size: 2rem;
@@ -181,12 +181,12 @@ export const Container = styled.div`
         }
 
         button {
-          width: 25rem;
-          height: 5rem;
-          margin-bottom: 10rem;
+          width: 15rem;
+          height: 3rem;
+          margin-bottom: 8rem;
 
           span {
-            font-size: 1.7rem;
+            font-size: 1rem;
           }
         }
       }

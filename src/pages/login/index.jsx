@@ -71,6 +71,7 @@ const Login = () => {
             <SharedInput
               label="Email"
               name="email"
+              margin="normal"
               _inputRef={register}
               error={!!errors.email}
               _id="email"

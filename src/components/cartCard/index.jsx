@@ -1,3 +1,6 @@
+import { RiCloseCircleLine } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { removeFromCartThunk } from "../../store/modules/cart/thunk";
 import {
   MainContainer,
   ImgContainer,
@@ -7,16 +10,19 @@ import {
   DefaultImg,
 } from "./style";
 
-const CartCard = ({ title, value }) => {
+const CartCard = ({ title, value, id }) => {
+  const dispatch = useDispatch();
+  const removeFromCart = () => {
+    dispatch(removeFromCartThunk(id));
+  };
   return (
     <>
       <MainContainer>
+        <div className="remove">
+          <RiCloseCircleLine size="2rem" onClick={removeFromCart} />
+        </div>
         <ImgContainer>
-          <DefaultImg
-            src={
-              "https://e7.pngegg.com/pngimages/44/475/png-clipart-laundry-liquid-clothing-clothing-clean-clothes-basket.png"
-            }
-          />
+          <DefaultImg src={"https://picsum.photos/200/300"} />
         </ImgContainer>
         <InfoContainer>
           <Title>{title}</Title>
