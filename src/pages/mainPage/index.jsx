@@ -25,17 +25,7 @@ const MainPage = () => {
     return state.laundries;
   });
 
-<<<<<<< HEAD
-  useEffect(() => {
-    dispatch(getAllThunk());
-    dispatch(getUserThunk());
-  }, );
-
-  useEffect(() => {
-    setLogged(JSON.stringify(user) === "{}" ? false : true);
-=======
   const getLocation = async () => {
->>>>>>> ffc7c3106e1c003c3bfda1a2e8c68e05a870ea82
     navigator.geolocation.getCurrentPosition((position) =>
       setUserCoordinates({
         latitude: position.coords.latitude,
