@@ -65,6 +65,7 @@ const CheckoutServices = () => {
                   key={index}
                   title={product.title}
                   value={product.price}
+                  id={product.id}
                 />
               ))
             ) : (
