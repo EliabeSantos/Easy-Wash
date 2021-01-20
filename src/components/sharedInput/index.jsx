@@ -20,6 +20,7 @@ function SharedInput({
   _minLength,
   _maxLength,
   _defaultValue,
+  _id
 }) {
   return (
     <>
@@ -36,6 +37,7 @@ function SharedInput({
         error={_error}
         helperText={_helperText}
         onChange={_onChange}
+        id={_id}
         type={_type}
         InputProps={{
           inputProps: {

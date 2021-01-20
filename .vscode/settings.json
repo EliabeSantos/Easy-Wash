@@ -8,7 +8,7 @@
     "package-lock.json": true,
     "public": false,
     "react_app_readme.md": true,
-    "README.md": true,
+    "README.md": false,
     "yarn.lock": true,
     ".eslintcache": true
   }

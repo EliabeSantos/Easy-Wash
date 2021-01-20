@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <Container>
       <div
-        className={`closeArea ${!open && "noPointer"}`}
+        className={`closeArea ${!open ? "noPointer" : "isOpen"}`}
         onClick={() => {
           open && setOpen(false);
         }}
@@ -55,7 +55,7 @@ const Header = () => {
             >
               {auth ? "Perfil" : "Entrar"}
             </ListItem>
-            <ListItem button onClick={() => history.push("/register")}>
+            <ListItem button onClick={() => history.push("/registerType")}>
               {auth ? "Novo Registro" : "Registre-se"}
             </ListItem>
             <Divider />
