@@ -46,4 +46,9 @@ export const ContentContainerModal = styled.div`
   .div {
     width: 100%;
   }
+  @media (max-width: 439px) {
+    div, button {
+      width: 100%;
+    }
+  }
 `;
