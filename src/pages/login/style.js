@@ -27,14 +27,6 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
 
-<<<<<<< HEAD
-=======
-  input {
-    text-align: center;
-    z-index: 1;
-  }
-
->>>>>>> develop
   @media (max-height: 700px) {
     height: 30%;
     z-index: 1;
