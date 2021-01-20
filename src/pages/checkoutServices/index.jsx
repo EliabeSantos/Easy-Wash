@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       addListToCartThunk(JSON.parse(localStorage.getItem("cart"))?.products)
     ),
-  removeFromCart: () => removeFromCartThunk(""),
+  removeFromCart: (id) => removeFromCartThunk(id),
 });
 
 const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
