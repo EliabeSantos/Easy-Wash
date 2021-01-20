@@ -6,10 +6,12 @@
     ".gitignore": true,
     "package.json": true,
     "package-lock.json": true,
-    "public": false,
+    "public": true,
     "react_app_readme.md": true,
-    "README.md": false,
+    "README.md": true,
     "yarn.lock": true,
-    ".eslintcache": true
+    ".eslintcache": true,
+    ".gitlab-ci.yml": true,
+    "src/reportWebVitals.js": true
   }
 }
