@@ -6,6 +6,9 @@ export const MainContainer = styled.div`
   position: relative;
   text-align: center;
   margin-bottom: 5%;
+  h2 {
+    margin-top: 5rem ;
+  }
   /* background-color: aliceblue; */
   @media (min-width: 1024px) {
   }

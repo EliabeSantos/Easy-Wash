@@ -1,9 +1,8 @@
-// import {} from "./style";
 import Header from "../../components/header";
 import Modal from "../../components/modalBase";
 import DefaultButton from "../../components/sharedButton";
 import { MainContainer, InformationContainer, InputContainer } from "./style";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useOpen } from "../../context/openModal";
 import Input from "../../components/sharedInput";
 import { useForm } from "react-hook-form";
@@ -66,6 +65,8 @@ const EditServices = () => {
         <Header />
         <h1>{user.company}</h1>
         <InformationContainer>
+          <h2>Serviços:</h2>
+          <hr />
           {user.services.map((service, key) => (
             <div className="div" key={key}>
               <h2>{service.title}</h2>
@@ -81,7 +82,8 @@ const EditServices = () => {
       </MainContainer>
       <Modal>
         <form onSubmit={handleSubmit(handleForm)}>
-          <h2>Adicionar Serviço</h2>
+          <h1>Adicionar Serviço</h1>
+
           <InputContainer>
             <Input
               _error={!!errors.title}
