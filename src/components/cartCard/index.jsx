@@ -1,3 +1,4 @@
+import { RiCloseCircleLine } from "react-icons/ri";
 import {
   MainContainer,
   ImgContainer,
@@ -7,16 +8,23 @@ import {
   DefaultImg,
 } from "./style";
 
-const CartCard = ({ title, value }) => {
+const CartCard = ({ title, value, id }) => {
+  const removeFromCart = () => {
+    const cartItems = JSON.parse(localStorage.getItem("cart"));
+
+    const newCartItems = cartItems.filter((item) => {
+      return item.id !== id;
+    });
+    localStorage.setItem("cart", JSON.stringify(newCartItems));
+  };
   return (
     <>
       <MainContainer>
+        <div className="remove">
+          <RiCloseCircleLine size="2rem" onClick={removeFromCart} />
+        </div>
         <ImgContainer>
-          <DefaultImg
-            src={
-              "https://e7.pngegg.com/pngimages/44/475/png-clipart-laundry-liquid-clothing-clothing-clean-clothes-basket.png"
-            }
-          />
+          <DefaultImg src={"https://picsum.photos/200/300"} />
         </ImgContainer>
         <InfoContainer>
           <Title>{title}</Title>
