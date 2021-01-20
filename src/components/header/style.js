@@ -6,6 +6,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 4rem;
+  z-index: 999;
 
   .noPointer {
     pointer-events: none;

@@ -20,10 +20,10 @@ import {
   AllContentContainer,
   CartText,
   FinalPrice,
-  DesckCartContainer,
-  DesckCartItems,
-  DesckServiceCard,
-  DesckServiceContainer,
+  // DesckCartContainer,
+  // DesckCartItems,
+  // DesckServiceCard,
+  // DesckServiceContainer,
   CardContainer,
 } from "./style";
 
@@ -57,7 +57,7 @@ const ServiceList = () => {
   }, [user]);
   return (
     <>
-      <Header style="height: 4vh"></Header>
+      <Header></Header>
       <AllContentContainer>
         <MainContainer>
           <ServiceImageContainer>
@@ -101,7 +101,7 @@ const ServiceList = () => {
                 : "00,00"}
             </FinalPrice>
           </CartItems>
-          <DesckCartContainer>
+          {/* <DesckCartContainer>
             <DesckCartItems>
               <h1>Total</h1>
             </DesckCartItems>
@@ -140,7 +140,7 @@ const ServiceList = () => {
             ) : (
               <p>Sem Items no carrinho</p>
             )}
-          </DesckServiceContainer>
+          </DesckServiceContainer> */}
         </CartContainer>
       </AllContentContainer>
     </>
