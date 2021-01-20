@@ -14,6 +14,7 @@ export const addToCartThunk = (product) => (dispatch, _) => {
 };
 
 export const addListToCartThunk = (list) => (dispatch, _) => {
+  if (!list) return;
   cart.products = [...list];
   const newCartTotal = cart.products.map((el) => {
     return parseFloat(el.price);
