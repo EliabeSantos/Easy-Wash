@@ -25,6 +25,7 @@ function SharedInput({
   return (
     <>
       <SharedInputElement
+        tabIndex={1}
         id={id}
         width={width}
         height={height}

@@ -11,6 +11,8 @@ import {
   ContainerImage,
   Image,
   Container,
+  Ocean,
+  Wave,
 } from "./style";
 import DefaultButton from "../../components/sharedButton";
 import SharedInput from "../../components/sharedInput";
@@ -94,6 +96,10 @@ const Login = () => {
           </Form>
         </ContainerForm>
       </Container>
+      <Ocean>
+        <Wave></Wave>
+        <Wave></Wave>
+      </Ocean>
     </>
   );
 };

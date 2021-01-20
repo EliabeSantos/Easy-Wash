@@ -36,7 +36,7 @@ export const Form = styled.form`
   justify-content: space-around;
 
   width: calc(100% - 4rem);
-  max-width: 648px;
+  max-width: 720px;
 
   padding: 2rem 0 4rem 0;
   .container_personal_info,

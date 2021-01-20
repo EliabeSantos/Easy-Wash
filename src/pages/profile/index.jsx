@@ -1,7 +1,13 @@
 import Header from "../../components/header";
 import Modal from "../../components/modalBase";
 import DefaultButton from "../../components/sharedButton";
-import { MainContainer, InformationContainer, Select } from "./style";
+import {
+  MainContainer,
+  InformationContainer,
+  Select,
+  Ocean,
+  Wave,
+} from "./style";
 import { useState, useEffect } from "react";
 import { useOpen } from "../../context/openModal";
 import Input from "../../components/sharedInput";
@@ -306,6 +312,10 @@ const Profile = () => {
           <DefaultButton name="Confirmar" type="submit" />
         </form>
       </Modal>
+      <Ocean>
+        <Wave></Wave>
+        <Wave></Wave>
+      </Ocean>
     </>
   );
 };
