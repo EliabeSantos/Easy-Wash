@@ -39,10 +39,11 @@ const LaundryCard = ({
   }, []);
 
   const handleGoToLaundry = () => {
-    history.push(`/laundry/${id}`);
+    history.push(`/services/${id}`);
   };
   return (
     <Container
+      data-testid="LaundryCard"
       src={src}
       className="laundryCard_container"
       onClick={handleGoToLaundry}

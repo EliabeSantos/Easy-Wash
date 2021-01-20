@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <Container>
       <div
-        className={`closeArea ${!open && "noPointer"}`}
+        className={`closeArea ${!open ? "noPointer" : "isOpen"}`}
         onClick={() => {
           open && setOpen(false);
         }}

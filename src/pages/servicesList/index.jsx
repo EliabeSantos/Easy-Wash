@@ -20,10 +20,10 @@ import {
   AllContentContainer,
   CartText,
   FinalPrice,
-  DesckCartContainer,
-  DesckCartItems,
-  DesckServiceCard,
-  DesckServiceContainer,
+  // DesckCartContainer,
+  // DesckCartItems,
+  // DesckServiceCard,
+  // DesckServiceContainer,
   CardContainer,
 } from "./style";
 
@@ -32,6 +32,7 @@ import { BsStarFill } from "react-icons/bs";
 
 const ServiceList = () => {
   let { id } = useParams();
+  const realId = parseInt(id);
   const [services, setServices] = useState([]);
   const [user, setUser] = useState([]);
   const axios = require("axios");
@@ -41,11 +42,11 @@ const ServiceList = () => {
   const getServices = async () => {
     try {
       const res = await axios.get(
-        "https://easy-wash-server.herokuapp.com/users"
+        `https://easy-wash-server.herokuapp.com/users`
       );
       const data = await res.data;
       const dataUser = data.filter((teste) => {
-        return teste.id === 3;
+        return teste.id === realId;
       });
       setServices(dataUser[0].services);
       setUser(dataUser[0]);
@@ -56,7 +57,7 @@ const ServiceList = () => {
   }, [user]);
   return (
     <>
-      <Header style="height: 4vh"></Header>
+      <Header></Header>
       <AllContentContainer>
         <MainContainer>
           <ServiceImageContainer>
@@ -70,14 +71,6 @@ const ServiceList = () => {
             <Description>Pedido minimo de 10 itens</Description>
           </ServiceInfo>
           <CardContainer>
-            {services.map((services) => (
-              <ServiceCard
-                title={services.title}
-                price={services.price}
-                description={services.description}
-                service={services}
-              />
-            ))}
             {services.map((services) => (
               <ServiceCard
                 title={services.title}
@@ -108,7 +101,7 @@ const ServiceList = () => {
                 : "00,00"}
             </FinalPrice>
           </CartItems>
-          <DesckCartContainer>
+          {/* <DesckCartContainer>
             <DesckCartItems>
               <h1>Total</h1>
             </DesckCartItems>
@@ -147,7 +140,7 @@ const ServiceList = () => {
             ) : (
               <p>Sem Items no carrinho</p>
             )}
-          </DesckServiceContainer>
+          </DesckServiceContainer> */}
         </CartContainer>
       </AllContentContainer>
     </>

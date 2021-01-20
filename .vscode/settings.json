@@ -3,13 +3,13 @@
   "files.exclude": {
     "node_modules": true,
     ".vscode": false,
-    ".gitignore": false,
+    ".gitignore": true,
     "package.json": true,
     "package-lock.json": true,
     "public": false,
     "react_app_readme.md": true,
     "README.md": false,
     "yarn.lock": true,
-    ".eslintcache": false
+    ".eslintcache": true
   }
 }

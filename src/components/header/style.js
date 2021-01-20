@@ -6,13 +6,19 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 4rem;
+  z-index: 999;
 
   .noPointer {
     pointer-events: none;
+    /* background-color: #00000000; */
+  }
+
+  .isOpen {
+    background-color: #00000088;
   }
 
   .closeArea {
-    position: absolute;
+    position: fixed;
     z-index: 4;
     top: 0;
     left: 0;
