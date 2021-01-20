@@ -28,4 +28,25 @@ test("email input should accept text", async () => {
   fireEvent.change(emailInputNode,{target:{value:'testando'}})
   expect (emailInputNode.value).toMatch("testando");
 });
+
+test("Passord field should have label", async () => {
+  const {getByLabelText} = render(
+    <BrowserRouter>
+      <Login />
+    </BrowserRouter>    
+  );    
+  const passwordInputNode = getByLabelText('Senha');
+  expect(passwordInputNode.getAttribute("name")).toBe("password");
+});
+test("Password input should accept", async () => {
+  const {getByLabelText} = render(
+    <BrowserRouter>
+      <Login />
+    </BrowserRouter>    
+  );    
+  const passwordInputNode = getByLabelText('Senha');
+  expect (passwordInputNode.value).toMatch("");
+  fireEvent.change(passwordInputNode,{target:{value:'testando'}})
+  expect (passwordInputNode.value).toMatch("testando");
+});
 })

@@ -6,6 +6,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 4rem;
+  z-index: 999;
 
   .noPointer {
     pointer-events: none;
@@ -23,6 +24,7 @@ export const Container = styled.div`
     left: 0;
     width: 100vw;
     height: 100vh;
+    transition: 0.25s ease-in-out;
   }
 
   .imageContainer {
