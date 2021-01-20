@@ -143,12 +143,9 @@ export const CardContainer = styled.div`
 
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
   padding: 1rem;
-
-  div {
-    margin: auto;
-  }
 `;
 export const CartContainer = styled.div`
   width: 100%;
