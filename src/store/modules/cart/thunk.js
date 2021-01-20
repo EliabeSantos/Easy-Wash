@@ -1,4 +1,4 @@
-import { addToCart, removeFromCart } from "./actions";
+import { addToCart, addListToCart, removeFromCart } from "./actions";
 import uuid from "react-uuid";
 const cart = {
   products: [],
@@ -11,6 +11,16 @@ export const addToCartThunk = (product) => (dispatch, _) => {
   cart.total = cart.total + parseFloat(product.price);
   localStorage.setItem("cart", JSON.stringify(cart));
   dispatch(addToCart(cart));
+};
+
+export const addListToCartThunk = (list) => (dispatch, _) => {
+  cart.products = [...cart.products, ...list];
+  const newCartTotal = cart.products.map((el) => {
+    return parseFloat(el.price);
+  });
+  cart.total = newCartTotal.reduce((acc, cur) => acc + cur);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  dispatch(addListToCart(cart));
 };
 
 export const removeFromCartThunk = (id) => (dispatch, _) => {
