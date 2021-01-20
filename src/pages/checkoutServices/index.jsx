@@ -9,7 +9,10 @@ import DefaultButton from "../../components/sharedButton";
 import { useHistory } from "react-router-dom";
 import { useOpen } from "../../context/openModal";
 import CheckoutPayment from "../checkoutPayment";
-import { addListToCartThunk } from "../../store/modules/cart/thunk";
+import {
+  addListToCartThunk,
+  removeFromCartThunk,
+} from "../../store/modules/cart/thunk";
 import { connect } from "react-redux";
 import { BiMap } from "react-icons/bi";
 
@@ -19,9 +22,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       addListToCartThunk(JSON.parse(localStorage.getItem("cart"))?.products)
     ),
+  removeFromCart: () => removeFromCartThunk(""),
 });
 
-const CheckoutServices = ({ cart, getCached }) => {
+const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
   const { open, setOpen } = useOpen();
   const history = useHistory();
   const [addressInfo, setAddressInfo] = useState({});
@@ -76,6 +80,7 @@ const CheckoutServices = ({ cart, getCached }) => {
                   title={product.title}
                   value={product.price}
                   id={product.id}
+                  _func={removeFromCart}
                 />
               ))
             ) : (
