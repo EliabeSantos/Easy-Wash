@@ -20,6 +20,7 @@
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-uuid": "^1.0.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.2.1",
@@ -49,6 +50,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+  },
+  "devDependencies": {
+    "cypress": "^6.3.0",
+    "eslint-plugin-cypress": "^2.11.2"
+>>>>>>> 581ed3817e9f8d7a246d4b57a087f87e2fb5391d
+=======
+>>>>>>> ffc7c3106e1c003c3bfda1a2e8c68e05a870ea82
   }
 }
