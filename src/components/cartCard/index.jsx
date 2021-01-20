@@ -1,4 +1,6 @@
 import { RiCloseCircleLine } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { removeFromCartThunk } from "../../store/modules/cart/thunk";
 import {
   MainContainer,
   ImgContainer,
@@ -9,13 +11,9 @@ import {
 } from "./style";
 
 const CartCard = ({ title, value, id }) => {
+  const dispatch = useDispatch();
   const removeFromCart = () => {
-    const cartItems = JSON.parse(localStorage.getItem("cart"));
-
-    const newCartItems = cartItems.filter((item) => {
-      return item.id !== id;
-    });
-    localStorage.setItem("cart", JSON.stringify(newCartItems));
+    dispatch(removeFromCartThunk(id));
   };
   return (
     <>
