@@ -13,9 +13,9 @@ export const addToCartThunk = (product) => (dispatch, _) => {
   dispatch(addToCart(cart));
 };
 
-export const removeFromCartThunk = (product) => (dispatch, _) => {
+export const removeFromCartThunk = (id) => (dispatch, _) => {
   const newCartProducts = cart.products.filter((el) => {
-    return el !== product.id;
+    return el.id !== id;
   });
   const newCartTotal = newCartProducts.map((el) => {
     return parseFloat(el.price);
