@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       addListToCartThunk(JSON.parse(localStorage.getItem("cart"))?.products)
     ),
-  removeFromCart: (id) => removeFromCartThunk(id),
+  removeFromCart: (id) => dispatch(removeFromCartThunk(id)),
 });
 
 const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
@@ -48,7 +48,7 @@ const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
   useEffect(() => {
     getCached();
     getDatasFromUser();
-  }, [id, cart]);
+  }, [id]);
 
   const { street, number, district, city, UF } = addressInfo;
 
@@ -71,26 +71,26 @@ const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
               )}
             </div>
           </div>
-          <div className="productsContainer">
-            <div className="productTitle">Meus produtos</div>
-            <div className="productsList">
-              {cart && cart.products ? (
-                cart.products.map((product, index) => (
-                  <CartCard
-                    key={index}
-                    title={product.title}
-                    value={product.price}
-                    id={product.id}
-                    _func={removeFromCart}
-                  />
-                ))
-              ) : (
-                <div className="emptyCart">
-                  <span>Carrinho está vazio</span>
-                  <DefaultButton name="Voltar" _func={() => history.goBack()} />
-                </div>
-              )}
-            </div>
+        </div>
+        <div className="productsContainer">
+          <div className="productTitle">Meus produtos</div>
+          <div className="productsList">
+            {cart && cart.products && cart.products.length > 0 ? (
+              cart.products.map((product, index) => (
+                <CartCard
+                  key={index}
+                  title={product.title}
+                  value={product.price}
+                  id={product.id}
+                  _func={removeFromCart}
+                />
+              ))
+            ) : (
+              <div className="emptyCart">
+                <span>Carrinho está vazio</span>
+                <DefaultButton name="Voltar" _func={() => history.goBack()} />
+              </div>
+            )}
           </div>
           <div className="footer">
             <span className="total">

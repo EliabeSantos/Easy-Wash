@@ -39,7 +39,7 @@ const Landing = () => {
             />
             <DefaultButton
               _func={() => {
-                history.push("/register");
+                history.push("/registertype");
               }}
               name={"Register"}
             />

@@ -13,7 +13,7 @@ function SharedInput({
   _helperText,
   value,
   id,
-  margin,
+  margin = "normal",
   _type,
   _min,
   _max,
