@@ -4,16 +4,15 @@ import { getAllThunk } from "../../store/modules/laundries/thunk";
 import Header from "../../components/header";
 import LaundryCard from "../../components/laudryCard";
 import { MainContainer, LaundryContainer } from "./style";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BiMap } from "react-icons/bi";
 import { getUserThunk } from "../../store/modules/currentUser/thunk";
-import SharedButton from "../../components/sharedButton";
+import CepCoords from "coordenadas-do-cep";
 
 const MainPage = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
 
-  const [userCoordinates, setUserCoordinates] = useState({});
+  const [userCoordinates, setUserCoordinates] = useState();
 
   const user = useSelector((state) => {
     return state.user;
@@ -26,6 +25,7 @@ const MainPage = () => {
     return state.laundries;
   });
 
+<<<<<<< HEAD
   useEffect(() => {
     dispatch(getAllThunk());
     dispatch(getUserThunk());
@@ -33,13 +33,31 @@ const MainPage = () => {
 
   useEffect(() => {
     setLogged(JSON.stringify(user) === "{}" ? false : true);
+=======
+  const getLocation = async () => {
+>>>>>>> ffc7c3106e1c003c3bfda1a2e8c68e05a870ea82
     navigator.geolocation.getCurrentPosition((position) =>
       setUserCoordinates({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
       })
     );
-  }, [user]);
+
+    if (!userCoordinates && logged) {
+      console.log(user);
+      const coords = await CepCoords.getByCep("83413676");
+      setUserCoordinates({
+        latitude: coords.lat,
+        longitude: coords.lon,
+      });
+    }
+  };
+  useEffect(() => {
+    dispatch(getAllThunk());
+    dispatch(getUserThunk());
+    setLogged(JSON.stringify(user) === "{}" ? false : true);
+    getLocation();
+  }, [userCoordinates, user]);
   return (
     <div>
       <Header />
