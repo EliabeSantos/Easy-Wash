@@ -1,6 +1,6 @@
 import Header from "../../components/header";
 import { Container } from "./style";
-import map from "./map.svg";
+
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -9,17 +9,29 @@ import DefaultButton from "../../components/sharedButton";
 import { useHistory } from "react-router-dom";
 import { useOpen } from "../../context/openModal";
 import CheckoutPayment from "../checkoutPayment";
+import {
+  addListToCartThunk,
+  removeFromCartThunk,
+} from "../../store/modules/cart/thunk";
+import { connect } from "react-redux";
+import { BiMap } from "react-icons/bi";
 
-const CheckoutServices = () => {
+const mapStateToProps = (state) => ({ cart: state.cart });
+const mapDispatchToProps = (dispatch) => ({
+  getCached: () =>
+    dispatch(
+      addListToCartThunk(JSON.parse(localStorage.getItem("cart"))?.products)
+    ),
+  removeFromCart: (id) => removeFromCartThunk(id),
+});
+
+const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
   const { open, setOpen } = useOpen();
   const history = useHistory();
   const [addressInfo, setAddressInfo] = useState({});
-  const cart = JSON.parse(localStorage.getItem("cart"));
   const token = localStorage.getItem("authToken");
   const decoded = jwt_decode(token);
   const id = decoded.sub;
-  // console.log({ id });
-
   const getDatasFromUser = async () => {
     try {
       const response = await axios.get(
@@ -33,7 +45,10 @@ const CheckoutServices = () => {
 
   console.log(cart);
 
-  useEffect(() => getDatasFromUser(), [id]);
+  useEffect(() => {
+    getCached();
+    getDatasFromUser();
+  }, [id, cart]);
 
   const { street, number, district, city, UF } = addressInfo;
 
@@ -42,28 +57,30 @@ const CheckoutServices = () => {
       <Header />
       <div className="gridContainer">
         <div className="address">
-          <div className="imgContainer">
-            <img src={map} alt="Map" />
-          </div>
           <div className="addressInfo">
             <h3 className="infoTittle">Endereço de coleta:</h3>
-            <p>
-              R. {street}, {number}
-            </p>
-            <p>
-              {district} - {city}, {UF}
-            </p>
+
+            {street ? (
+              <h2>
+                <BiMap /> &nbsp;
+                {`${street}, ${number} - ${district}, ${city}, ${UF}`}
+              </h2>
+            ) : (
+              <h1>...</h1>
+            )}
           </div>
         </div>
         <div className="productsContainer">
           <div className="productTitle">Meus produtos</div>
           <div className="productsList">
-            {cart ? (
+            {cart && cart.products ? (
               cart.products.map((product, index) => (
                 <CartCard
                   key={index}
                   title={product.title}
                   value={product.price}
+                  id={product.id}
+                  _func={removeFromCart}
                 />
               ))
             ) : (
@@ -99,4 +116,4 @@ const CheckoutServices = () => {
   );
 };
 
-export default CheckoutServices;
+export default connect(mapStateToProps, mapDispatchToProps)(CheckoutServices);
