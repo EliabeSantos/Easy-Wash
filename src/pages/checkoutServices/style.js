@@ -1,17 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 920px;
+  max-width: 1080px;
   margin: 0 auto;
   .address {
-    /* width: 100vw; */
-    /* background-color: lightblue; */
     padding: 1rem;
     display: flex;
     align-items: center;
 
     .imgContainer {
-      /* background-color: lightcoral; */
       height: 5rem;
       width: 5rem;
       display: flex;
@@ -24,7 +21,6 @@ export const Container = styled.div`
     }
 
     .addressInfo {
-      /* background-color: lightcyan; */
       margin-left: 1rem;
       h3,
       p {
@@ -39,13 +35,17 @@ export const Container = styled.div`
 
   .productsContainer {
     .productTitle {
-      /* background-color: lightblue; */
       padding: 2rem;
       text-align: center;
       font-size: 1.5rem;
       border-bottom: 1px solid #aaa;
       color: #333;
     }
+
+    .productsList:last-child {
+      margin-bottom: 2.5rem;
+    }
+
     .productsList {
       width: 100%;
       display: flex;
@@ -105,7 +105,7 @@ export const Container = styled.div`
   @media (min-width: 1280px) {
     .gridContainer {
       display: grid;
-      grid-template-columns: auto 30%;
+      grid-template-columns: auto 50%;
       grid-template-rows: auto auto;
       grid-template-areas:
         "products address"
@@ -191,5 +191,23 @@ export const Container = styled.div`
         }
       }
     }
+  }
+`;
+
+export const NotLogged = styled.div`
+  max-width: 1080px;
+  width: 80vw;
+  height: 20rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  > span {
+    font-size: 1.7rem;
+  }
+
+  button {
+    width: 20rem;
   }
 `;

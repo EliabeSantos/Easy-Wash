@@ -61,7 +61,7 @@ const CheckoutPayment = () => {
             setFinish(true);
             setTimeout(() => {
               setOpen(false);
-              history.push("/");
+              history.push("/main-page");
             }, 3000);
           }}
         />
