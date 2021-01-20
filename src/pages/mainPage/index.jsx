@@ -49,7 +49,7 @@ const MainPage = () => {
   }, []);
 
   useEffect(() => {
-    setLogged(JSON.stringify(user) === "{}" ? false : true);
+    setLogged(localStorage.getItem("authToken") === "" ? false : true);
     getLocation();
   }, [userCoordinates, user]);
   return (

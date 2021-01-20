@@ -130,16 +130,22 @@ const Register = () => {
   });
   const login = async (formattedObject) => {
     try {
-      const token = await axios.post(
+      const res = await axios.post(
         "https://easy-wash-server.herokuapp.com/register",
         formattedObject
       );
+      const token = await res.data.accessToken;
       localStorage.setItem("authToken", token);
-      if (localStorage.getItem("authToken")) {
+      if (
+        localStorage.getItem("authToken") &&
+        localStorage.getItem("authToken") !== ""
+      ) {
+        console.log(token);
         history.push("/main-page");
       }
     } catch (err) {
       console.log(err);
+      setErrorMessage("Não foi possivel concluir o seu cadastro");
     }
   };
   const handleFormSubmit = (data) => {

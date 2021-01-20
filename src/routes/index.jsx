@@ -6,7 +6,9 @@ import ServiceList from "../pages/servicesList";
 import Register from "../pages/register";
 import MainPage from "../pages/mainPage";
 import RegisterType from "../pages/registerType";
-import Profile from "../pages/profile";
+import ClientProfile from "../pages/profile";
+import EditServices from "../pages/editServices";
+import ProfileRedirect from "../pages/profileRedirect";
 const Routes = () => {
   return (
     <>
@@ -18,7 +20,9 @@ const Routes = () => {
         <Route exact path="/register/:type" component={Register} />
         <Route exact path="/main-page" component={MainPage} />
         <Route exact path="/registerType" component={RegisterType} />
-        <Route exact path="/profile/client" component={Profile} />
+        <Route exact path="/profile/client" component={ClientProfile} />
+        <Route exact path="/profile/company" component={EditServices} />
+        <Route exact path="/profile/" component={ProfileRedirect} />
         {/* <Route exact path="/profile/client/edit" component={} /> */}
         {/* <Route exact path="/profile/company" component={} /> */}
         {/* <Route exact path="/profile/company/edit-service" component={} /> */}

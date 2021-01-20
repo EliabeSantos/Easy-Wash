@@ -83,7 +83,7 @@ const Login = () => {
             <SharedInput
               label="Senha"
               name="password"
-              type="password"
+              _type="password"
               error={!!errors.password}
               _inputRef={register}
               _id="password"
