@@ -37,7 +37,9 @@ const CheckoutServices = () => {
   console.log(cart);
 
   useEffect(() => {
-    dispatch(addListToCartThunk(cart.products));
+    if (cart) {
+      dispatch(addListToCartThunk(cart.products));
+    }
     getDatasFromUser();
   }, [id]);
 

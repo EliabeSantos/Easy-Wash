@@ -14,7 +14,7 @@ export const addToCartThunk = (product) => (dispatch, _) => {
 };
 
 export const addListToCartThunk = (list) => (dispatch, _) => {
-  cart.products = [...cart.products, ...list];
+  cart.products = [...list];
   const newCartTotal = cart.products.map((el) => {
     return parseFloat(el.price);
   });
@@ -27,6 +27,15 @@ export const removeFromCartThunk = (id) => (dispatch, _) => {
   const newCartProducts = cart.products.filter((el) => {
     return el.id !== id;
   });
+
+  if (newCartProducts.length === 0) {
+    localStorage.removeItem("cart");
+    cart.products = [];
+    cart.total = 0;
+    dispatch(removeFromCart(cart));
+    return;
+  }
+
   const newCartTotal = newCartProducts.map((el) => {
     return parseFloat(el.price);
   });
