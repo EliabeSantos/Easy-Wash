@@ -81,7 +81,7 @@ const Login = () => {
             <SharedInput
               label="Senha"
               name="password"
-              type="password"
+              _type="password"
               error={!!errors.password}
               _inputRef={register}
               _id="password"
@@ -89,7 +89,7 @@ const Login = () => {
             {errors.password && <p type="warning">{errors.password.message}</p>}
 
             <ButtonContainer>
-              <DefaultButton data-testid='button' name="Entrar" type="submit" />
+              <DefaultButton data-testid="button" name="Entrar" type="submit" />
             </ButtonContainer>
           </Form>
         </ContainerForm>
