@@ -4,7 +4,7 @@ import Register from "../../pages/register";
 import axios from "axios";
 import "@testing-library/jest-dom";
 
-import { BrowserRouter,Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 describe("Register", () => {
   test("Name field should have label", async () => {
@@ -116,51 +116,6 @@ expect (passwordInputNode.value).toMatch("1234");
 });
 
 })
-
-test("Password field should have label", async () => {
-  const {getByLabelText} = render(
-    <BrowserRouter> 
-        <Register></Register>
-    </BrowserRouter>    
-  );    
-  const passwordInputNode = getByLabelText('Senha');
-  expect(passwordInputNode.getAttribute("name")).toBe("password");
-});
-test("Password input should accept text", async () => {
-const {getByLabelText} = render(
-  <BrowserRouter>
-    <Register />
-  </BrowserRouter>    
-);    
-const passwordInputNode = getByLabelText('Senha');
-expect (passwordInputNode.value).toMatch("");
-fireEvent.change(passwordInputNode,{target:{value:'1234'}})
-expect (passwordInputNode.value).toMatch("1234");
-});
-
-
-// test("Password field should have label", async () => {
-//   const {getByLabelText} = render(
-//     <BrowserRouter> 
-//         <Register></Register>
-//     </BrowserRouter>    
-//   );    
-//   const passwordInputNode = getByLabelText('Senha');
-//   expect(passwordInputNode.getAttribute("name")).toBe("password");
-// });
-// test("Password input should accept text", async () => {
-// const {getByLabelText} = render(
-//   <BrowserRouter>
-//     <Register />
-//   </BrowserRouter>    
-// );    
-// const passwordInputNode = getByLabelText('Senha');
-// expect (passwordInputNode.value).toMatch("");
-// fireEvent.change(passwordInputNode,{target:{value:'1234'}})
-// expect (passwordInputNode.value).toMatch("1234");
-// });
-
-
 
 test("rePassword field should have label", async () => {
   const {getByLabelText} = render(
@@ -283,16 +238,16 @@ test("city field should have label", async () => {
   expect(cityInputNode.getAttribute("name")).toBe("city");
 });
 
-test("district input should accept text", async () => {
+test("city input should accept text", async () => {
 const {getByLabelText} = render(
   <BrowserRouter>
     <Register />
   </BrowserRouter>    
 );    
-const districtInputNode = getByLabelText('Cidade');
-expect (districtInputNode.value).toMatch("");
-fireEvent.change(districtInputNode,{target:{value:'Colombo'}})
-expect (districtInputNode.value).toMatch("Colombo");
+const cityInputNode = getByLabelText('Cidade');
+expect (cityInputNode.value).toMatch("");
+fireEvent.change(cityInputNode,{target:{value:'Colombo'}})
+expect (cityInputNode.value).toMatch("Colombo");
 });
 
 
@@ -302,8 +257,8 @@ test("Federative unit field should have label", async () => {
         <Register></Register>
     </BrowserRouter>    
   );    
-  const cityInputNode = getByLabelText('UF');
-  expect(cityInputNode.getAttribute("name")).toBe("uf");
+  const ufInputNode = getByLabelText('UF');
+  expect(ufInputNode.getAttribute("name")).toBe("uf");
 });
 
 test("Federative unit input should accept text", async () => {
@@ -312,8 +267,8 @@ const {getByLabelText} = render(
     <Register />
   </BrowserRouter>    
 );    
-const districtInputNode = getByLabelText('UF');
-expect (districtInputNode.value).toMatch("");
-fireEvent.change(districtInputNode,{target:{value:'PR'}})
-expect (districtInputNode.value).toMatch("PR");
+const ufInputNode = getByLabelText('UF');
+expect (ufInputNode.value).toMatch("");
+fireEvent.change(ufInputNode,{target:{value:'PR'}})
+expect (ufInputNode.value).toMatch("PR");
 });
