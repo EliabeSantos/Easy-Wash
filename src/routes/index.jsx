@@ -6,6 +6,7 @@ import ServiceList from "../pages/servicesList";
 import Register from "../pages/register";
 import MainPage from "../pages/mainPage";
 import RegisterType from "../pages/registerType";
+import ClientProfile from "../pages/profile";
 const Routes = () => {
   return (
     <>
