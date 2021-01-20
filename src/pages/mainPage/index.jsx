@@ -42,9 +42,13 @@ const MainPage = () => {
       });
     }
   };
+
   useEffect(() => {
     dispatch(getAllThunk());
     dispatch(getUserThunk());
+  },[]);
+
+  useEffect(() => {
     setLogged(JSON.stringify(user) === "{}" ? false : true);
     getLocation();
   }, [userCoordinates, user]);
