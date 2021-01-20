@@ -20,10 +20,6 @@ import {
   AllContentContainer,
   CartText,
   FinalPrice,
-  // DesckCartContainer,
-  // DesckCartItems,
-  // DesckServiceCard,
-  // DesckServiceContainer,
   CardContainer,
 } from "./style";
 
