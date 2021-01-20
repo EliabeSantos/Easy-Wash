@@ -13,8 +13,8 @@ import {
 } from "./style";
 import DefaultButton from "../sharedButton";
 import { useState } from "react";
-import { BiPlus } from "react-icons/bi";
-import { BiMinus } from "react-icons/bi";
+
+import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { addToCartThunk } from "../../store/modules/cart/thunk";
 import { useDispatch } from "react-redux";
 
@@ -27,31 +27,27 @@ const ServiceCard = ({ title, description, price, service }) => {
     <>
       <MainContainer>
         <ImgContainer>
-          <DefaultImg
-            src={
-              "https://e7.pngegg.com/pngimages/44/475/png-clipart-laundry-liquid-clothing-clothing-clean-clothes-basket.png"
-            }
-          />
+          <DefaultImg src={"https://picsum.photos/200/300"} />
         </ImgContainer>
         <InfoContainer>
           <Title>{title}</Title>
           <Description>{description}</Description>
           <ButtonContainer>
             <ProductSelectContainer>
-              <BiMinus
+              <AiOutlineMinusCircle
                 onClick={() => {
                   if (value > 1) {
                     setValue(value - 1);
                   }
                 }}
-                size="1.5rem"
+                size="2rem"
               />
               <Quantify>{value}</Quantify>
-              <BiPlus
+              <AiOutlinePlusCircle
                 onClick={() => {
                   setValue(value + 1);
                 }}
-                size="1.5rem"
+                size="2rem"
               />
             </ProductSelectContainer>
             <PriceContainer>
@@ -65,6 +61,7 @@ const ServiceCard = ({ title, description, price, service }) => {
                 }}
                 name={"Adicionar"}
                 width="50%"
+                height="1.5rem"
               />
             </PriceContainer>
           </ButtonContainer>

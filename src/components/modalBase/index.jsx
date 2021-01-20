@@ -23,9 +23,7 @@ export default function SimpleModal(props) {
             <ContainerIcon>
               <RiCloseCircleLine onClick={handleClose} />
             </ContainerIcon>
-            <ContentContainerModal>
-              {props.children}
-            </ContentContainerModal>
+            <ContentContainerModal>{props.children}</ContentContainerModal>
           </ModalElement>
         </Overlay>
       )}
