@@ -236,6 +236,9 @@ export const DesckCartContainer = styled.div`
   @media (min-width: 1024px) {
     display: flex;
   }
+  @media (max-height: 700px) {
+    height: 100px;
+  }
 `;
 export const DesckCartItems = styled.div`
   width: 100%;
