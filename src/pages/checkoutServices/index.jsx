@@ -117,3 +117,4 @@ const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
     </>
   );
 };
+export default connect(mapStateToProps, mapDispatchToProps)(CheckoutServices);
