@@ -36,7 +36,7 @@ const LaundryCard = ({
 
   useEffect(() => {
     setDistance(getCoordDistance());
-  }, []);
+  }, [userCoordinates]);
 
   const handleGoToLaundry = () => {
     history.push(`/services/${id}`);
