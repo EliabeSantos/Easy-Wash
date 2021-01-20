@@ -4,6 +4,8 @@ export const MainContainer = styled.div`
   width: 100%;
   height: 100%;
   max-width: 720px;
+
+  font-family: "Ubuntu", sans-serif;
   @media (min-height: 600px) {
     display: flex;
     flex-direction: column;
@@ -41,6 +43,8 @@ export const TitleContainer = styled.div`
 
   display: flex;
   justify-content: center;
+
+  text-align: center;
 
   @media (max-height: 376px) {
     height: 20%;
@@ -108,9 +112,6 @@ export const Img = styled.img`
   @media (min-height: 550px) {
     width: 12rem;
   }
-  /* @media (min-height: 600px) {
-    width: 45%;
-  } */
 `;
 export const ButtonsContainer = styled.div`
   width: 100%;
@@ -148,13 +149,13 @@ export const Ocean = styled.div`
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 `;
 export const Wave = styled.div`
   background: url(https://cdn.kcak11.com/codepen_assets/wave_animation/wave.svg)
     repeat-x;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 6400px;
   height: 198px;
