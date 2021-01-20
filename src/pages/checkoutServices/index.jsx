@@ -28,7 +28,6 @@ const CheckoutServices = ({ cart, getCached }) => {
   const token = localStorage.getItem("authToken");
   const decoded = jwt_decode(token);
   const id = decoded.sub;
-
   const getDatasFromUser = async () => {
     try {
       const response = await axios.get(
@@ -44,7 +43,6 @@ const CheckoutServices = ({ cart, getCached }) => {
 
   useEffect(() => {
     getCached();
-    console.log(cart);
     getDatasFromUser();
   }, [id, cart]);
 
