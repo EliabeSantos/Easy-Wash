@@ -14,6 +14,7 @@ export const ModalElement = styled.div`
   margin: auto;
   padding: 15px;
   z-index: 11;
+  border-radius: 5px;
 `;
 
 export const Overlay = styled.div`
