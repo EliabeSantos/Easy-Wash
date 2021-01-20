@@ -9,8 +9,12 @@ import DefaultButton from "../../components/sharedButton";
 import { useHistory } from "react-router-dom";
 import { useOpen } from "../../context/openModal";
 import CheckoutPayment from "../checkoutPayment";
+import { addListToCartThunk } from "../../store/modules/cart/thunk";
+import { useDispatch } from "react-redux";
 
 const CheckoutServices = () => {
+  const dispatch = useDispatch();
+
   const { open, setOpen } = useOpen();
   const history = useHistory();
   const [addressInfo, setAddressInfo] = useState({});
@@ -32,7 +36,10 @@ const CheckoutServices = () => {
 
   console.log(cart);
 
-  useEffect(() => getDatasFromUser(), [id]);
+  useEffect(() => {
+    dispatch(addListToCartThunk(cart.products));
+    getDatasFromUser();
+  }, [id]);
 
   const { street, number, district, city, UF } = addressInfo;
 
