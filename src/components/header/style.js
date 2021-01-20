@@ -7,13 +7,25 @@ export const Container = styled.div`
   align-items: center;
   height: 4rem;
 
+  .noPointer {
+    pointer-events: none;
+  }
+
+  .closeArea {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
   .imageContainer {
-    background-color: #fff;
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 3rem;
+    width: 3rem;
     border-radius: 50%;
     overflow: hidden;
-    margin-left: 1rem;
+    margin-right: 1rem;
 
     img {
       width: 100%;
@@ -29,6 +41,52 @@ export const Container = styled.div`
       .MuiSvgIcon-root {
         font-size: 2rem;
         color: #fff;
+      }
+    }
+
+    .MuiDrawer-root .MuiDrawer-paper {
+      background-color: var(--color-primary);
+      color: #fff;
+      width: 50%;
+
+      hr.MuiDivider-root {
+        width: 95%;
+        align-self: center;
+        height: 0.1rem;
+        border-radius: 2px;
+        background-color: #fff;
+      }
+
+      .drawerHeader {
+        text-align: end;
+        button span {
+          color: #fff;
+          font-size: 2rem;
+        }
+      }
+
+      ul {
+        font-size: 1.3rem;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    height: 3rem;
+    /* flex-direction: row-reverse;
+    justify-content: flex-end; */
+
+    .imageContainer {
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+
+    .menuContainer .MuiDrawer-root .MuiDrawer-paper {
+      width: 30%;
+      ul {
+        font-size: 1rem;
       }
     }
   }

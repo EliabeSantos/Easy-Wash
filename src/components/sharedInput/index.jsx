@@ -8,12 +8,18 @@ function SharedInput({
   label,
   name,
   _inputRef,
+  _onChange,
   _error,
   _helperText,
   value,
-  _onChange,
   id,
   margin,
+  _type,
+  _min,
+  _max,
+  _minLength,
+  _maxLength,
+  _defaultValue,
 }) {
   return (
     <>
@@ -22,14 +28,24 @@ function SharedInput({
         width={width}
         height={height}
         margin={margin}
-        label={label}
         variant="outlined"
+        label={label}
         name={name}
+        value={value}
         inputRef={_inputRef}
         error={_error}
         helperText={_helperText}
-        value={value}
         onChange={_onChange}
+        type={_type}
+        InputProps={{
+          inputProps: {
+            min: _min,
+            max: _max,
+            minLength: _minLength,
+            maxLength: _maxLength,
+          },
+        }}
+        defaultValue={_defaultValue}
       />
     </>
   );

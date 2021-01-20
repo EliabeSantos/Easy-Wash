@@ -1,58 +1,72 @@
-import jwt_decode from "jwt-decode";
 import Header from "../../components/header";
 import Modal from "../../components/modalBase";
 import DefaultButton from "../../components/sharedButton";
 import { MainContainer, InformationContainer, Select } from "./style";
-import axios from "axios";
 import { useState, useEffect } from "react";
 import { useOpen } from "../../context/openModal";
 import Input from "../../components/sharedInput";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserThunk } from "../../store/modules/currentUser/thunk";
+import axios from "axios";
 
 const Profile = () => {
-  const token = localStorage.authToken;
-  const userInformation = jwt_decode(token);
-  console.log(userInformation);
-  const [userData, setUserData] = useState({});
+  const dispatch = useDispatch();
   const [currency, setCurrency] = useState("AC");
-  const url = `https://easy-wash-server.herokuapp.com/users/${userInformation.sub}`;
   const handleCurrency = (ev) => {
     setCurrency(ev.target.value);
   };
+  const user = useSelector((state) => {
+    return state.user;
+  });
 
   const schema = yup.object({
     password: yup.string(),
     passwordConfirmation: yup
       .string()
       .oneOf([yup.ref("password"), null], "As senhas devem ser iguais!"),
-    phone: yup.string,
+    phone: yup.string(),
     address: yup.object({
       street: yup.string(),
-      number: yup.string,
+      number: yup.string(),
       city: yup.string(),
+      UF: yup.string(),
+      zipcode: yup.string(),
     }),
   });
-  const { register, handleSubmit, errors } = useForm({
+  const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(schema),
   });
 
   const handleForm = (data) => {
-    console.log(data);
-    // axios.put(url, { user: { ...data } }).then((res) => console.log(res));
+    for (var prop in data) {
+      if (data[prop] === undefined || data[prop] === "") {
+        delete data[prop];
+      }
+    }
+    const newUser = { ...user, ...data };
+    const token = localStorage.getItem("authToken");
+    axios
+      .patch(
+        `https://easy-wash-server.herokuapp.com/users/${user.id}`,
+        newUser,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(() => {
+        handleModal();
+        dispatch(getUserThunk());
+      })
+      .catch((error) => setError(error));
   };
 
   const { open, setOpen } = useOpen();
   const handleModal = () => setOpen(!open);
-
-  const getUserData = (url) => {
-    if (url) {
-      axios.get(url).then((res) => {
-        setUserData({ ...res.data });
-      });
-    }
-  };
 
   const federationUnity = [
     {
@@ -161,38 +175,39 @@ const Profile = () => {
     },
   ];
 
-  useEffect(() => getUserData(url), []);
-
+  useEffect(() => dispatch(getUserThunk()), [user]);
+  // const { street, number, district, city, zipcode, UF } = user.address;
   return (
     <>
       <MainContainer>
         <Header />
-        <h1>{userData.name}</h1>
+        <h1>{user.name}</h1>
 
         <InformationContainer>
           <div>
             <h4>Nome:</h4>
-            <p>{userData.name}</p>
+            <p>{user.name}</p>
             <hr></hr>
             <h4>Senha:</h4>
             <p>************</p>
             <hr></hr>
             <h4>Telefone:</h4>
-            <p>{userData.phone}</p>
+            <p>{user.phone}</p>
             <hr></hr>
             <h4>Endereço:</h4>
-            <p>
-              {/* {userData.address.street}
-              {userData.address.number} 
-              {userData.address.district} 
-              {userData.address.city} */}
-              {/* {userData.data.UF} */}
-            </p>
+            {/* <p>
+              {street}
+              {number}
+              {district}
+              {city}
+              {UF}
+            </p> */}
             <hr></hr>
           </div>
           <DefaultButton name="Editar Perfil" _func={handleModal} />
         </InformationContainer>
       </MainContainer>
+
       <Modal>
         <form onSubmit={handleSubmit(handleForm)}>
           <h2>Editar Perfil</h2>
@@ -231,7 +246,7 @@ const Profile = () => {
               _error={!!errors.zipcode}
               _helperText={errors.zipcode?.message}
               _inputRef={register}
-              name="zipcode"
+              name="address.zipcode"
               label="CEP"
               margin="dense"
             />
@@ -241,7 +256,7 @@ const Profile = () => {
               _error={!!errors.street}
               _helperText={errors.street?.message}
               _inputRef={register}
-              name="street"
+              name="address.street"
               label="Rua"
               width="20rem"
               margin="dense"
@@ -250,7 +265,7 @@ const Profile = () => {
               _error={!!errors.number}
               _helperText={errors.number?.message}
               _inputRef={register}
-              name="number"
+              name="address.number"
               label="N&ordm;"
               width="4.5rem"
               margin="dense"
@@ -262,7 +277,7 @@ const Profile = () => {
               _error={!!errors.city}
               _helperText={errors.city?.message}
               _inputRef={register}
-              name="city"
+              name="address.city"
               label="Cidade"
               width="20rem"
               margin="dense"
@@ -279,7 +294,7 @@ const Profile = () => {
               label="UF"
               margin="dense"
               width="4.5rem"
-              name="UF"
+              name="address.UF"
             >
               {federationUnity.map((option) => (
                 <option key={option.value} value={option.value}>
@@ -288,7 +303,7 @@ const Profile = () => {
               ))}
             </Select>
           </div>
-          <DefaultButton name="Confirmar" type="submit" _func={handleModal} />
+          <DefaultButton name="Confirmar" type="submit" />
         </form>
       </Modal>
     </>

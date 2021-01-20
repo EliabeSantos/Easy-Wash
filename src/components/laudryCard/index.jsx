@@ -2,12 +2,12 @@ import { getDistance } from "geolib";
 
 import { Container } from "./style";
 import { useHistory } from "react-router-dom";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineClockCircle } from "react-icons/ai";
+import { FaMotorcycle } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 const LaundryCard = ({
   name,
-  score,
   address,
   schedule,
   deliveryFee,
@@ -15,14 +15,15 @@ const LaundryCard = ({
   id,
   userCoordinates,
 }) => {
+  const [score, _setScore] = useState(
+    ((Math.random() * 20) / 10 + 3).toFixed(1)
+  );
   const history = useHistory();
   const [distance, setDistance] = useState("Distância indisponível");
 
   const getCoordDistance = () => {
-    //const coord1 = { latitude: -25.403332, longitude: -49.258488 }; Para uso de testes
-    //const coord2 = { latitude: -25.415534, longitude: -49.255582 };
     try {
-      let coorddDistance = getDistance(address.coordinates, userCoordinates);
+      let coorddDistance = getDistance(address.coords, userCoordinates);
       coorddDistance = Math.round(coorddDistance / 100);
       coorddDistance = (coorddDistance / 10).toFixed(1);
       return coorddDistance;
@@ -57,11 +58,20 @@ const LaundryCard = ({
             {score}
             <AiFillStar />
           </span>
-          <span>{distance ? `${distance}KM` : "Distância indisponível"}</span>
+          <span>
+            {distance && !isNaN(distance)
+              ? `${distance}KM`
+              : "Distância indisponível"}
+          </span>
         </div>
         <div className="laundryCard_content_price">
-          <span>{schedule}</span>
-          <span>{deliveryFee}</span>
+          <span className="icon">
+            <AiOutlineClockCircle /> &nbsp;
+            {`${schedule.initial} - ${schedule.end}`}
+          </span>
+          <span className="icon">
+            <FaMotorcycle /> &nbsp; R${deliveryFee}
+          </span>
         </div>
       </div>
     </Container>
