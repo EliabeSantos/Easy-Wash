@@ -9,6 +9,7 @@ import DefaultButton from "../../components/sharedButton";
 import { useHistory } from "react-router-dom";
 import { useOpen } from "../../context/openModal";
 import CheckoutPayment from "../checkoutPayment";
+import { BiMap } from "react-icons/bi";
 
 const CheckoutServices = () => {
   const { open, setOpen } = useOpen();
@@ -42,17 +43,17 @@ const CheckoutServices = () => {
       <Header />
       <div className="gridContainer">
         <div className="address">
-          <div className="imgContainer">
-            <img src={map} alt="Map" />
-          </div>
           <div className="addressInfo">
             <h3 className="infoTittle">Endereço de coleta:</h3>
-            <p>
-              R. {street}, {number}
-            </p>
-            <p>
-              {district} - {city}, {UF}
-            </p>
+
+            {street ? (
+              <h2>
+                <BiMap /> &nbsp;
+                {`${street}, ${number} - ${district}, ${city}, ${UF}`}
+              </h2>
+            ) : (
+              <h1>...</h1>
+            )}
           </div>
         </div>
         <div className="productsContainer">
