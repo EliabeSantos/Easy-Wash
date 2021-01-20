@@ -74,7 +74,7 @@ const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
           <div className="productsContainer">
             <div className="productTitle">Meus produtos</div>
             <div className="productsList">
-              {cart && cart.products ? (
+              {cart && cart.products && cart.products.length > 0 ? (
                 cart.products.map((product, index) => (
                   <CartCard
                     key={index}
