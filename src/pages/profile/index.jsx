@@ -36,6 +36,7 @@ const Profile = () => {
       zipcode: yup.string(),
     }),
   });
+  
   const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(schema),
   });

@@ -14,17 +14,34 @@ import { getUserThunk } from "../../store/modules/currentUser/thunk";
 import axios from "axios";
 
 const EditServices = () => {
+  //modal state
   const { open, setOpen } = useOpen();
   const handleModal = () => setOpen(!open);
+  //user thunk
+  const dispatch = useDispatch();
+  const user = useSelector((state) => {
+    return state.user;
+  });
+  useEffect(() => dispatch(getUserThunk()), [user]);
+  //form yup
+
   return (
     <>
       <MainContainer>
         <Header />
         <InformationContainer>
-          <DefaultButton Name="Adicionar Serviço" _func={handleModal} />
+          <DefaultButton name="Adicionar Serviço" _func={handleModal} />
         </InformationContainer>
       </MainContainer>
       <Modal>
+        {user.services.map((service) => (
+          <div>
+            <h2>service.title</h2>
+            <p>{service.description}</p>
+            <h4>R${service.price}</h4>
+            <hr></hr>
+          </div>
+        ))}
         <DefaultButton name="Finalizar" />
       </Modal>
     </>
