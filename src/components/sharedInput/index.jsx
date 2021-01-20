@@ -1,5 +1,4 @@
 import React from "react";
-// import { TextField } from "@material-ui/core";
 import { SharedInputElement } from "./style.js";
 
 function SharedInput({
@@ -13,19 +12,22 @@ function SharedInput({
   _helperText,
   value,
   id,
-  margin,
+  margin = "normal",
   _type,
   _min,
   _max,
   _minLength,
   _maxLength,
   _defaultValue,
-  _id
+  _id,
+  rows
 }) {
   return (
     <>
       <SharedInputElement
-        id={id}
+        rows={rows}
+        multiline
+        id={_id}
         width={width}
         height={height}
         margin={margin}
@@ -37,7 +39,6 @@ function SharedInput({
         error={_error}
         helperText={_helperText}
         onChange={_onChange}
-        id={_id}
         type={_type}
         InputProps={{
           inputProps: {

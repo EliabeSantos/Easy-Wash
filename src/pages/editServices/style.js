@@ -6,7 +6,7 @@ export const MainContainer = styled.div`
   position: relative;
   text-align: center;
   margin-bottom: 5%;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   @media (min-width: 1024px) {
   }
 `;
@@ -19,11 +19,11 @@ export const InformationContainer = styled.div`
   right: 0;
   left: 0;
   margin-top: 15%;
-  background-color: brown;
+  /* background-color: brown; */
   h4,
+  h3,
   p {
-    text-align: left;
-    padding-left: 5%;
+    text-align: center;
   }
   hr {
     margin-bottom: 4rem;
@@ -33,4 +33,9 @@ export const InformationContainer = styled.div`
     width: 90%;
     height: 95%;
   }
+`;
+
+export const InputContainer = styled.div`
+  /* margin-bottom: 1rem; */
+  /* background-color: pink; */
 `;
