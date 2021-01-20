@@ -3,8 +3,8 @@
   "files.exclude": {
     "node_modules": true,
     ".vscode": false,
-    ".gitignore": false,
-    "package.json": true,
+    ".gitignore": true,
+    "package.json": false,
     "package-lock.json": true,
     "public": false,
     "react_app_readme.md": true,

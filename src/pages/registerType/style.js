@@ -5,6 +5,7 @@ export const ContainerRegisterType = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   height: 90vh;
   z-index: 1;
 
@@ -20,6 +21,32 @@ export const ContainerRegisterType = styled.div`
     padding: 1rem;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   }
+=======
+  min-height: calc(100vh - 5rem);
+
+  @media (max-height: 800px) {
+    justify-content: flex-start;
+  }
+  .MuiTypography-body1 {
+    font-size: 1.7rem;
+  }
+  .MuiFormControlLabel-root {
+    width: 100%;
+    margin-bottom: 8rem;
+    border: 0;
+    background-color: #3d90ab;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+    @media (max-height: 550px) {
+      margin-bottom: 2rem;
+    }
+    @media (max-height: 650px) {
+      margin-bottom: 4rem;
+    }
+  }
+>>>>>>> c4e2d02fc3e64873de6b082f9212f06ae5b52d57
   .MuiFormControlLabel-root:hover {
     color: white;
   }
@@ -34,6 +61,7 @@ export const ContainerRegisterType = styled.div`
     padding: 2rem;
     font-size: 3rem;
     text-align: center;
+<<<<<<< HEAD
     color: #ff686b;
   }
   fieldset {
@@ -43,12 +71,28 @@ export const ContainerRegisterType = styled.div`
     align-items: center;
     justify-content: center;
     z-index: 1;
+=======
+    color: #3d90ab;
+    @media (max-height: 550px) {
+      padding: 1rem;
+    }
+  }
+  fieldset {
+    display: flex;
+
+    padding: 3rem;
+    align-items: center;
+    justify-content: center;
+  }
+  button {
+>>>>>>> c4e2d02fc3e64873de6b082f9212f06ae5b52d57
   }
   .MuiButton-outlinedPrimary {
     margin-bottom: 2rem;
   }
   .MuiButton-label {
     font-size: 1.5rem;
+<<<<<<< HEAD
   }
 `;
 export const Ocean = styled.div`
@@ -93,5 +137,7 @@ export const Wave = styled.div`
     50% {
       transform: translate3d(0, 5px, 0);
     }
+=======
+>>>>>>> c4e2d02fc3e64873de6b082f9212f06ae5b52d57
   }
 `;

@@ -11,6 +11,8 @@ import {
   ContainerImage,
   Image,
   Container,
+  Ocean,
+  Wave,
 } from "./style";
 import DefaultButton from "../../components/sharedButton";
 import SharedInput from "../../components/sharedInput";
@@ -71,8 +73,10 @@ const Login = () => {
             <SharedInput
               label="Email"
               name="email"
+              margin="normal"
               _inputRef={register}
               error={!!errors.email}
+              _id="email"
             />
             {errors.email && <p type="warning">{errors.email.message}</p>}
 
@@ -82,15 +86,20 @@ const Login = () => {
               type="password"
               error={!!errors.password}
               _inputRef={register}
+              _id="password"
             />
             {errors.password && <p type="warning">{errors.password.message}</p>}
 
             <ButtonContainer>
-              <DefaultButton name="Entrar" type="submit" />
+              <DefaultButton data-testid="button" name="Entrar" type="submit" />
             </ButtonContainer>
           </Form>
         </ContainerForm>
       </Container>
+      <Ocean>
+        <Wave></Wave>
+        <Wave></Wave>
+      </Ocean>
     </>
   );
 };

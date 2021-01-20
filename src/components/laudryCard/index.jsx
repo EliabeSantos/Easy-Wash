@@ -36,13 +36,14 @@ const LaundryCard = ({
 
   useEffect(() => {
     setDistance(getCoordDistance());
-  }, []);
+  }, [userCoordinates]);
 
   const handleGoToLaundry = () => {
     history.push(`/services/${id}`);
   };
   return (
     <Container
+      data-testid="LaundryCard"
       src={src}
       className="laundryCard_container"
       onClick={handleGoToLaundry}
