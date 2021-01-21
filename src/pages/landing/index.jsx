@@ -1,6 +1,4 @@
 import MainImg from "./landingImg.svg";
-import waveImg from "./waveImg.svg";
-import waveImg2 from "./wave2.svg";
 import Header from "../../components/header";
 import DefaultButton from "../../components/sharedButton";
 import { useHistory } from "react-router-dom";

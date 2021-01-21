@@ -15,7 +15,6 @@ import { FiChevronLeft } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
 
 const Header = () => {
-  // const [onDesktop, setOnDesktop] = useState(false);
   const [open, setOpen] = useState(false);
   const auth = localStorage.getItem("authToken");
   const history = useHistory();

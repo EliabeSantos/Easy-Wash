@@ -56,7 +56,7 @@ const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
   return (
     <>
       <Header />
-      {token !== null ? (
+      {token !== "" ? (
         <Container>
           <div className="gridContainer">
             <div className="address">

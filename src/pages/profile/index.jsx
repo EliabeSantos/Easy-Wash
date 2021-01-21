@@ -1,13 +1,7 @@
 import Header from "../../components/header";
 import Modal from "../../components/modalBase";
 import DefaultButton from "../../components/sharedButton";
-import {
-  MainContainer,
-  InformationContainer,
-  Select,
-  Ocean,
-  Wave,
-} from "./style";
+import { MainContainer, InformationContainer, Ocean, Wave } from "./style";
 import { useState, useEffect } from "react";
 import { useOpen } from "../../context/openModal";
 import Input from "../../components/sharedInput";

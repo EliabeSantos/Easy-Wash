@@ -20,7 +20,6 @@ import { useDispatch } from "react-redux";
 
 const ServiceCard = ({ title, description, price, service }) => {
   const [value, setValue] = useState(1);
-  const [serciveCount, setServiceCount] = useState([]);
   const realPrice = parseInt(price) * value;
   const dispatch = useDispatch();
   return (

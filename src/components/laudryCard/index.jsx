@@ -15,9 +15,7 @@ const LaundryCard = ({
   id,
   userCoordinates,
 }) => {
-  const [score, _setScore] = useState(
-    ((Math.random() * 20) / 10 + 3).toFixed(1)
-  );
+  const [score] = useState(((Math.random() * 20) / 10 + 3).toFixed(1));
   const history = useHistory();
   const [distance, setDistance] = useState("Distância indisponível");
 
@@ -27,11 +25,7 @@ const LaundryCard = ({
       coorddDistance = Math.round(coorddDistance / 100);
       coorddDistance = (coorddDistance / 10).toFixed(1);
       return coorddDistance;
-    } catch (err) {
-      console.log(
-        "coordenadas não foram enviadas, impossível realiar o cálculo de distância"
-      );
-    }
+    } catch (err) {}
   };
 
   useEffect(() => {
