@@ -56,13 +56,8 @@ const Register = () => {
       .string()
       .required("Campo obrigatório")
       .typeError("Apenas números"),
-    cpf: yup
-      .string()
-      .required("Campo obrigatório")
-      .matches(
-        /^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/,
-        "Formato invalido"
-      ),
+    cpf: yup.string().required("Campo obrigatório"),
+
     password: yup.string().required("Campo obrigatório"),
     rePassword: yup
       .string()
@@ -149,10 +144,10 @@ const Register = () => {
     }
   };
   const handleFormSubmit = (data) => {
+    const realName = type === "PJ" ? "company" : "name";
     const formattedObject = {
       email: data.email,
       password: data.password,
-      company: data.name,
       type: type,
       phone: data.phone,
       address: {
@@ -172,6 +167,10 @@ const Register = () => {
       },
       services: [],
     };
+
+    formattedObject[realName] = data.name;
+
+    console.log(formattedObject);
 
     login(formattedObject);
   };

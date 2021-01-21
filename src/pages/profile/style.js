@@ -2,6 +2,26 @@ import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 
 export const MainContainer = styled.div`
+  .remove {
+    background-color: #f00;
+    border: none;
+    color: #e5e5e5;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 2px 0px;
+    margin-top: 1rem;
+    /* position: fixed;
+    right: 0; */
+  }
+
+  .remove:hover {
+    background-color: #a00;
+    cursor: pointer;
+  }
+
   width: 100%;
   height: 80vh;
   position: relative;

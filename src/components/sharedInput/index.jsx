@@ -20,19 +20,14 @@ function SharedInput({
   _maxLength,
   _defaultValue,
   _id,
-  rows
+  rows,
 }) {
   return (
     <>
       <SharedInputElement
-<<<<<<< HEAD
-        tabIndex={1}
-        id={id}
-=======
         rows={rows}
         multiline
         id={_id}
->>>>>>> a03f375092c332def70d62d109f55b33e70aa5d8
         width={width}
         height={height}
         margin={margin}

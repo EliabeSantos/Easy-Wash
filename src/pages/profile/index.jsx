@@ -17,22 +17,22 @@ import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserThunk } from "../../store/modules/currentUser/thunk";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Profile = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [currency, setCurrency] = useState("AC");
+  const token = localStorage.getItem("authToken");
   const handleCurrency = (ev) => {
     setCurrency(ev.target.value);
   };
   const user = useSelector((state) => {
     return state.user;
   });
+  // console.log(user);
 
   const schema = yup.object({
-    password: yup.string(),
-    passwordConfirmation: yup
-      .string()
-      .oneOf([yup.ref("password"), null], "As senhas devem ser iguais!"),
     phone: yup.string(),
     address: yup.object({
       street: yup.string(),
@@ -48,13 +48,9 @@ const Profile = () => {
   });
 
   const handleForm = (data) => {
-    for (var prop in data) {
-      if (data[prop] === undefined || data[prop] === "") {
-        delete data[prop];
-      }
-    }
     const newUser = { ...user, ...data };
-    const token = localStorage.getItem("authToken");
+
+    console.log({ newUser });
     axios
       .patch(
         `https://easy-wash-server.herokuapp.com/users/${user.id}`,
@@ -74,6 +70,24 @@ const Profile = () => {
 
   const { open, setOpen } = useOpen();
   const handleModal = () => setOpen(!open);
+
+  const handleRemoveAccount = async () => {
+    console.log("removeu");
+    try {
+      await axios.delete(
+        `https://easy-wash-server.herokuapp.com/users/${user.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      localStorage.removeItem("authToken");
+      history.push("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const federationUnity = [
     {
@@ -186,17 +200,14 @@ const Profile = () => {
   const { street, number, district, city, UF } = user.address;
   return (
     <>
+      <Header />
       <MainContainer>
-        <Header />
         <h1>{user.name}</h1>
 
         <InformationContainer>
           <div>
             <h4>Nome:</h4>
             <p>{user.name}</p>
-            <hr></hr>
-            <h4>Senha:</h4>
-            <p>************</p>
             <hr></hr>
             <h4>Telefone:</h4>
             <p>{user.phone}</p>
@@ -213,31 +224,15 @@ const Profile = () => {
           </div>
           <DefaultButton name="Editar Perfil" _func={handleModal} />
         </InformationContainer>
+        <button className="remove" onClick={handleRemoveAccount}>
+          Excluir conta
+        </button>
       </MainContainer>
 
       <Modal>
         <form onSubmit={handleSubmit(handleForm)}>
           <h2>Editar Perfil</h2>
-          <div className="div">
-            <Input
-              _error={!!errors.password}
-              _helperText={errors.password?.message}
-              _inputRef={register}
-              name="password"
-              label="Nova senha"
-              margin="dense"
-            />
-          </div>
-          <div className="div">
-            <Input
-              _error={!!errors.passwordConfirmation}
-              _helperText={errors.passwordConfirmation?.message}
-              _inputRef={register}
-              name="passwordConfirmation"
-              label="Confirmar nova senha"
-              margin="dense"
-            />
-          </div>
+
           <div className="div">
             <Input
               _error={!!errors.phone}
@@ -246,6 +241,7 @@ const Profile = () => {
               name="phone"
               label="Telefone"
               margin="dense"
+              _defaultValue={user.phone}
             />
           </div>
           <div className="div">
@@ -256,6 +252,7 @@ const Profile = () => {
               name="address.zipcode"
               label="CEP"
               margin="dense"
+              _defaultValue={user.address.zipcode}
             />
           </div>
           <div className="div">
@@ -267,6 +264,7 @@ const Profile = () => {
               label="Rua"
               width="20rem"
               margin="dense"
+              _defaultValue={user.address.street}
             />
             <Input
               _error={!!errors.number}
@@ -276,6 +274,7 @@ const Profile = () => {
               label="N&ordm;"
               width="4.5rem"
               margin="dense"
+              _defaultValue={user.address.number}
             />
           </div>
 
@@ -288,6 +287,7 @@ const Profile = () => {
               label="Cidade"
               width="20rem"
               margin="dense"
+              _defaultValue={user.address.city}
             />
             <Select
               error={!!errors.UF}
