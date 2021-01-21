@@ -4,7 +4,6 @@ import ServiceCard from "../../components/serviceCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, useParams } from "react-router-dom";
-import DefaultButton from "../../components/sharedButton";
 import { useHistory } from "react-router-dom";
 
 import {
