@@ -1,7 +1,7 @@
 import MainIMage from "./serviceImg.svg";
 import Header from "../../components/header";
 import ServiceCard from "../../components/serviceCard";
-
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
