@@ -11,8 +11,11 @@ import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserThunk } from "../../store/modules/currentUser/thunk";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const EditServices = () => {
+  const history = useHistory();
+  const token = localStorage.getItem("authToken");
   //modal state
   const { open, setOpen } = useOpen();
   const handleModal = () => setOpen(!open);
@@ -59,6 +62,24 @@ const EditServices = () => {
       .catch((error) => setError(error));
   };
 
+  const handleRemoveAccount = async () => {
+    console.log("removeu");
+    try {
+      await axios.delete(
+        `https://easy-wash-server.herokuapp.com/users/${user.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      localStorage.removeItem("authToken");
+      history.push("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <MainContainer>
@@ -78,6 +99,10 @@ const EditServices = () => {
             </div>
           ))}
           <DefaultButton name="Adicionar Serviço" _func={handleModal} />
+          <br></br>
+          <button className="remove" onClick={handleRemoveAccount}>
+            Excluir conta
+          </button>
         </InformationContainer>
       </MainContainer>
       <Modal>

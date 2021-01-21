@@ -7,8 +7,29 @@ export const MainContainer = styled.div`
   text-align: center;
   margin-bottom: 5%;
   h2 {
-    margin-top: 5rem ;
+    margin-top: 5rem;
   }
+
+  .remove {
+    background-color: #f00;
+    border: none;
+    color: #e5e5e5;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 2px 0px;
+    margin: 1rem 0;
+    /* position: fixed;
+    right: 0; */
+  }
+
+  .remove:hover {
+    background-color: #a00;
+    cursor: pointer;
+  }
+
   /* background-color: aliceblue; */
   @media (min-width: 1024px) {
   }

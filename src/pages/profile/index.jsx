@@ -223,10 +223,11 @@ const Profile = () => {
             <hr></hr>
           </div>
           <DefaultButton name="Editar Perfil" _func={handleModal} />
+          <br></br>
+          <button className="remove" onClick={handleRemoveAccount}>
+            Excluir conta
+          </button>
         </InformationContainer>
-        <button className="remove" onClick={handleRemoveAccount}>
-          Excluir conta
-        </button>
       </MainContainer>
 
       <Modal>

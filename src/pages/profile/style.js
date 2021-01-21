@@ -12,7 +12,7 @@ export const MainContainer = styled.div`
     font-weight: 700;
     font-size: 1rem;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 2px 0px;
-    margin-top: 1rem;
+    margin: 1rem 0;
     /* position: fixed;
     right: 0; */
   }
