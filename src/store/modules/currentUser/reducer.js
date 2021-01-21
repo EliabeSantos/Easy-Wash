@@ -15,6 +15,11 @@ const user = {
     city: "",
     UF: "",
   },
+  schedule: {
+    initial: "",
+    end: "",
+  },
+  services: [{}],
 };
 
 export const userReducer = (state = user, action) => {
