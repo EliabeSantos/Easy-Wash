@@ -1,10 +1,9 @@
 import MainIMage from "./serviceImg.svg";
 import Header from "../../components/header";
 import ServiceCard from "../../components/serviceCard";
-import axios from "axios";
+
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, useParams } from "react-router-dom";
-import DefaultButton from "../../components/sharedButton";
 import { useHistory } from "react-router-dom";
 
 import {
@@ -20,10 +19,6 @@ import {
   AllContentContainer,
   CartText,
   FinalPrice,
-  // DesckCartContainer,
-  // DesckCartItems,
-  // DesckServiceCard,
-  // DesckServiceContainer,
   CardContainer,
 } from "./style";
 
@@ -71,12 +66,13 @@ const ServiceList = () => {
             <Description>Pedido minimo de 10 itens</Description>
           </ServiceInfo>
           <CardContainer>
-            {services.map((services) => (
+            {services.map((services, index) => (
               <ServiceCard
                 title={services.title}
                 price={services.price}
                 description={services.description}
                 service={services}
+                key={index}
               />
             ))}
           </CardContainer>
@@ -101,46 +97,6 @@ const ServiceList = () => {
                 : "00,00"}
             </FinalPrice>
           </CartItems>
-          {/* <DesckCartContainer>
-            <DesckCartItems>
-              <h1>Total</h1>
-            </DesckCartItems>
-            <DesckCartItems>
-              <h1>
-                {total
-                  ? Intl.NumberFormat("de-DE", {
-                      style: "currency",
-                      currency: "BRL",
-                    }).format(total.total)
-                  : "00,00"}
-              </h1>
-            </DesckCartItems>
-            <DesckCartItems>
-              <DefaultButton
-                _func={() => {
-                  history.push("/checkout");
-                }}
-                name={"Ver Carrinho"}
-              ></DefaultButton>
-            </DesckCartItems>
-          </DesckCartContainer>
-          <DesckServiceContainer>
-            {total ? (
-              total.products.map((services) => (
-                <DesckServiceCard>
-                  <p>{services.title}</p>
-                  <p>
-                    {Intl.NumberFormat("de-DE", {
-                      style: "currency",
-                      currency: "BRL",
-                    }).format(services.price)}
-                  </p>
-                </DesckServiceCard>
-              ))
-            ) : (
-              <p>Sem Items no carrinho</p>
-            )}
-          </DesckServiceContainer> */}
         </CartContainer>
       </AllContentContainer>
     </>

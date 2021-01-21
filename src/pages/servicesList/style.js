@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const AllContentContainer = styled.div`
-  width: 100vw;
-
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -34,7 +32,6 @@ export const MainContainer = styled.div`
 
   @media (min-width: 1024px) {
     width: 65%;
-    max-width: 65%;
   }
 `;
 export const ServiceImageContainer = styled.div`
@@ -132,6 +129,7 @@ export const CardContainer = styled.div`
 `;
 export const CartContainer = styled.div`
   width: 100%;
+  max-width: 728px;
   height: 3rem;
   background-color: #3d90ab;
   z-index: 0;
@@ -170,85 +168,3 @@ export const FinalPrice = styled.h2`
   margin: 0;
   color: white;
 `;
-
-// Box do carrinho para width maior de 1024 px
-
-// export const DesckCartContainer = styled.div`
-//   width: 100%;
-//   height: 18%;
-
-//   display: none;
-
-//   flex-direction: column;
-//   @media (min-width: 1024px) {
-//     display: flex;
-//     position: relative;
-//     bottom: 0;
-//     right: 0;
-//   }
-//   @media (max-height: 700px) {
-//     height: 100px;
-//   }
-// `;
-// export const DesckCartItems = styled.div`
-//   width: 100%;
-//   height: 33.333%;
-//   display: none;
-
-//   button {
-//     width: 100%;
-//     height: 100%;
-//     text-align: center;
-//     border-radius: 0;
-//   }
-//   h1 {
-//     margin: 0;
-//     font-weight: normal;
-//     padding: 0 1rem;
-//     font-size: 18px;
-//   }
-//   h1:first-child {
-//     padding-top: 0.5rem;
-//   }
-
-//   @media (min-width: 1024px) {
-//     display: block;
-//   }
-// `;
-// export const DesckServiceCard = styled.div`
-//   width: 100%;
-//   height: 8%;
-//   padding: 1rem 0;
-
-//   min-height: 30px;
-
-//   display: none;
-
-//   border-bottom: 2px solid rgba(0, 0, 0, 0.5);
-//   p {
-//     padding-left: 1rem;
-//     margin: 0;
-//     font-size: 12px;
-//   }
-
-//   @media (min-width: 1024px) {
-//     display: block;
-//   }
-// `;
-// export const DesckServiceContainer = styled.div`
-//   width: 100%;
-//   height: 82%;
-//   min-height: 40vh;
-//   max-height: 70vh;
-//   overflow-y: scroll;
-//   display: none;
-
-//   p {
-//     font-size: 14px;
-//     padding-left: 1rem;
-//   }
-
-//   @media (min-width: 1024px) {
-//     display: block;
-//   }
-// `;
