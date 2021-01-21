@@ -1,5 +1,5 @@
 import Header from "../../components/header";
-import { ContainerRegisterType, ContainerInput, Ocean, Wave } from "./style";
+import { ContainerRegisterType, Ocean, Wave } from "./style";
 import DefaultButton from "../../components/sharedButton";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
@@ -8,7 +8,6 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
 
 const RegisterType = () => {
   const history = useHistory();
