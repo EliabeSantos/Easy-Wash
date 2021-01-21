@@ -130,16 +130,22 @@ const Register = () => {
   });
   const login = async (formattedObject) => {
     try {
-      const token = await axios.post(
+      const res = await axios.post(
         "https://easy-wash-server.herokuapp.com/register",
         formattedObject
       );
+      const token = await res.data.accessToken;
       localStorage.setItem("authToken", token);
-      if (localStorage.getItem("authToken")) {
+      if (
+        localStorage.getItem("authToken") &&
+        localStorage.getItem("authToken") !== ""
+      ) {
+        console.log(token);
         history.push("/main-page");
       }
     } catch (err) {
       console.log(err);
+      setErrorMessage("Não foi possivel concluir o seu cadastro");
     }
   };
   const handleFormSubmit = (data) => {
@@ -187,6 +193,7 @@ const Register = () => {
               _helperText={errors.name?.message}
               _error={!!errors.name}
               _type="text"
+              _id="name"
             />
             <SharedInput
               label="Email"
@@ -196,6 +203,7 @@ const Register = () => {
               _helperText={errors.email?.message}
               _error={!!errors.email}
               _type="email"
+              _id="email"
             />
             <SharedInput
               label="Telefone"
@@ -205,6 +213,7 @@ const Register = () => {
               _helperText={errors.phone?.message}
               _error={!!errors.phone}
               _type="string"
+              _id="phone"
             />
             <SharedInput
               label={type === "PJ" ? "CNPJ" : "CPF"}
@@ -214,6 +223,7 @@ const Register = () => {
               _helperText={errors.cpf?.message}
               _error={!!errors.cpf}
               _type="text"
+              _id="cpf"
             />
             <SharedInput
               label="Senha"
@@ -223,6 +233,7 @@ const Register = () => {
               _helperText={errors.password?.message}
               _error={!!errors.password}
               _type="password"
+              _id="password"
             />
             <SharedInput
               label="Repetir senha"
@@ -232,6 +243,7 @@ const Register = () => {
               _helperText={errors.rePassword?.message}
               _error={!!errors.rePassword}
               _type="password"
+              _id="rePassword"
             />
           </div>
 
@@ -247,6 +259,7 @@ const Register = () => {
               _error={!!errors.zipcode}
               _type="number"
               _maxLength="8"
+              _id="zipcode"
             />
             <div className="single_liner">
               <SharedInput
@@ -259,6 +272,7 @@ const Register = () => {
                 _helperText={errors.street?.message}
                 _error={!!errors.street}
                 _type="text"
+                _id="street"
               />
 
               <SharedInput
@@ -271,6 +285,7 @@ const Register = () => {
                 _error={!!errors.number}
                 _type="number"
                 _min="0"
+                _id="number"
               />
             </div>
             <SharedInput
@@ -283,6 +298,7 @@ const Register = () => {
               _helperText={errors.district?.message}
               _error={!!errors.district}
               _type="text"
+              _id="district"
             />
             <div className="single_liner">
               <SharedInput
@@ -295,6 +311,7 @@ const Register = () => {
                 _helperText={errors.city?.message}
                 _error={!!errors.city}
                 _type="text"
+                _id="city"
               />
               <SharedInput
                 label="UF"
@@ -307,6 +324,7 @@ const Register = () => {
                 _error={!!errors.uf}
                 _type="text"
                 _maxLength="2"
+                _id="uf"
               />
             </div>
           </div>

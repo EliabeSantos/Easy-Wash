@@ -42,10 +42,14 @@ const MainPage = () => {
       });
     }
   };
+
   useEffect(() => {
     dispatch(getAllThunk());
     dispatch(getUserThunk());
-    setLogged(JSON.stringify(user) === "{}" ? false : true);
+  }, []);
+
+  useEffect(() => {
+    setLogged(localStorage.getItem("authToken") === "" ? false : true);
     getLocation();
   }, [userCoordinates, user]);
   return (

@@ -1,5 +1,5 @@
 import Header from "../../components/header";
-import { Container } from "./style";
+import { Container, NotLogged } from "./style";
 
 import jwt_decode from "jwt-decode";
 import axios from "axios";
@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       addListToCartThunk(JSON.parse(localStorage.getItem("cart"))?.products)
     ),
-  removeFromCart: (id) => removeFromCartThunk(id),
+  removeFromCart: (id) => dispatch(removeFromCartThunk(id)),
 });
 
 const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
@@ -30,8 +30,9 @@ const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
   const history = useHistory();
   const [addressInfo, setAddressInfo] = useState({});
   const token = localStorage.getItem("authToken");
-  const decoded = jwt_decode(token);
-  const id = decoded.sub;
+  const decoded = token ? jwt_decode(token) : "";
+  const id = decoded.sub ? decoded.sub : "";
+
   const getDatasFromUser = async () => {
     try {
       const response = await axios.get(
@@ -48,72 +49,90 @@ const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
   useEffect(() => {
     getCached();
     getDatasFromUser();
-  }, [id, cart]);
+  }, [id]);
 
   const { street, number, district, city, UF } = addressInfo;
 
   return (
     <>
       <Header />
-      <Container>
-        <div className="gridContainer">
-          <div className="address">
-            <div className="addressInfo">
-              <h3 className="infoTittle">Endereço de coleta:</h3>
+      {token !== null ? (
+        <Container>
+          <div className="gridContainer">
+            <div className="address">
+              <div className="addressInfo">
+                <h3 className="infoTittle">Endereço de coleta:</h3>
 
-              {street ? (
-                <h2>
-                  <BiMap /> &nbsp;
-                  {`${street}, ${number} - ${district}, ${city}, ${UF}`}
-                </h2>
-              ) : (
-                <h1>...</h1>
-              )}
+                {street ? (
+                  <h2>
+                    <BiMap /> &nbsp;
+                    {`${street}, ${number} - ${district}, ${city}, ${UF}`}
+                  </h2>
+                ) : (
+                  <h1>...</h1>
+                )}
+              </div>
             </div>
-          </div>
-          <div className="productsContainer">
-            <div className="productTitle">Meus produtos</div>
-            <div className="productsList">
-              {cart && cart.products ? (
-                cart.products.map((product, index) => (
-                  <CartCard
-                    key={index}
-                    title={product.title}
-                    value={product.price}
-                    id={product.id}
-                    _func={removeFromCart}
-                  />
-                ))
-              ) : (
-                <div className="emptyCart">
-                  <span>Carrinho está vazio</span>
-                  <DefaultButton name="Voltar" _func={() => history.goBack()} />
-                </div>
-              )}
+
+            <div className="productsContainer">
+              <div className="productTitle">Meus produtos</div>
+              <div className="productsList">
+                {cart && cart.products && cart.products.length > 0 ? (
+                  cart.products.map((product, index) => (
+                    <CartCard
+                      key={index}
+                      title={product.title}
+                      value={product.price}
+                      id={product.id}
+                      _func={removeFromCart}
+                    />
+                  ))
+                ) : (
+                  <div className="emptyCart">
+                    <span>Carrinho está vazio</span>
+                    <DefaultButton
+                      name="Voltar"
+                      _func={() => history.goBack()}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-          <div className="footer">
-            <span className="total">
-              <span>Total: </span>
-              <span>
-                {Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(cart ? cart.total : 0)}
+            <div className="footer">
+              <span className="total">
+                <span>Total: </span>
+                <span>
+                  {Intl.NumberFormat("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  }).format(
+                    cart && cart.products && cart.products.length > 0
+                      ? cart.total
+                      : 0
+                  )}
+                </span>
               </span>
-            </span>
-            {cart && (
-              <DefaultButton
-                name="Finalizar Pagamento"
-                width="15rem"
-                height="3.5rem"
-                _func={() => setOpen(true)}
-              />
-            )}
+              {cart && cart.products && cart.products.length > 0 && (
+                <DefaultButton
+                  name="Finalizar Pagamento"
+                  width="15rem"
+                  height="3.5rem"
+                  _func={() => setOpen(true)}
+                />
+              )}
+            </div>
+            {open && <CheckoutPayment />}
           </div>
-        </div>
-        {open && <CheckoutPayment />}
-      </Container>
+        </Container>
+      ) : (
+        <NotLogged>
+          <span>Você não tem acesso a esta página!</span>
+          <DefaultButton
+            name="Voltar ao Inicio"
+            _func={() => history.push("/")}
+          />
+        </NotLogged>
+      )}
     </>
   );
 };

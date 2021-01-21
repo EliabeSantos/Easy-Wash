@@ -2,7 +2,7 @@
   font-size: 60%;
   --color-primary: #3d90ab;
   --color-secondary: #47d4ff;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 html,
@@ -21,6 +21,14 @@ html::-webkit-scrollbar-track {
 ::-webkit-scrollbar-thumb {
   background: #dad7d7;
 }
+
+h1,
+h2,
+h3,
+h4 {
+  color: #333;
+}
+
 @media (min-width: 640px) {
   :root {
     font-size: 70%;

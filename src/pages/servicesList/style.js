@@ -140,6 +140,9 @@ export const CartContainer = styled.div`
 
   position: fixed;
   bottom: 0;
+  @media (min-width: 728px) {
+    border-radius: 5px 5px 0 0;
+  }
 `;
 export const CartItems = styled.div`
   width: 33.33%;

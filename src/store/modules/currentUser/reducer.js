@@ -1,6 +1,21 @@
 import { GET_USER } from "./actionType";
 
-const user = {};
+const user = {
+  email: "",
+  password: "",
+  name: "",
+  type: "",
+  phone: "",
+  id: "",
+  address: {
+    zipcode: "",
+    street: "",
+    number: "",
+    district: "",
+    city: "",
+    UF: "",
+  },
+};
 
 export const userReducer = (state = user, action) => {
   switch (action.type) {

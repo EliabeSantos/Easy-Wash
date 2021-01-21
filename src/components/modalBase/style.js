@@ -14,6 +14,7 @@ export const ModalElement = styled.div`
   margin: auto;
   padding: 15px;
   z-index: 11;
+  border-radius: 5px;
 `;
 
 export const Overlay = styled.div`
@@ -45,5 +46,10 @@ export const ContentContainerModal = styled.div`
   text-align: center;
   .div {
     width: 100%;
+  }
+  @media (max-width: 439px) {
+    div, button {
+      width: 100%;
+    }
   }
 `;

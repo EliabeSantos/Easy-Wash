@@ -4,16 +4,18 @@
     "node_modules": true,
     ".vscode": false,
     ".gitignore": true,
-<<<<<<< HEAD
+
     "package.json": true,
-=======
-    "package.json": false,
->>>>>>> c4e2d02fc3e64873de6b082f9212f06ae5b52d57
+
     "package-lock.json": true,
-    "public": false,
+    "public": true,
     "react_app_readme.md": true,
-    "README.md": false,
+    "README.md": true,
     "yarn.lock": true,
-    ".eslintcache": true
+
+    ".eslintcache": false,
+
+    ".gitlab-ci.yml": true,
+    "src/reportWebVitals.js": true
   }
 }

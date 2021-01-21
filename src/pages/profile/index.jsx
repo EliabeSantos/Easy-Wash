@@ -1,7 +1,13 @@
 import Header from "../../components/header";
 import Modal from "../../components/modalBase";
 import DefaultButton from "../../components/sharedButton";
-import { MainContainer, InformationContainer, Select } from "./style";
+import {
+  MainContainer,
+  InformationContainer,
+  Select,
+  Ocean,
+  Wave,
+} from "./style";
 import { useState, useEffect } from "react";
 import { useOpen } from "../../context/openModal";
 import Input from "../../components/sharedInput";
@@ -176,7 +182,7 @@ const Profile = () => {
   ];
 
   useEffect(() => dispatch(getUserThunk()), [user]);
-  // const { street, number, district, city, zipcode, UF } = user.address;
+  const { street, number, district, city, UF } = user.address;
   return (
     <>
       <MainContainer>
@@ -195,13 +201,13 @@ const Profile = () => {
             <p>{user.phone}</p>
             <hr></hr>
             <h4>Endereço:</h4>
-            {/* <p>
-              {street}
-              {number}
-              {district}
-              {city}
+            <p>
+              {street},&nbsp;
+              {number},&nbsp;
+              {district}&nbsp; - &nbsp;
+              {city}&nbsp;
               {UF}
-            </p> */}
+            </p>
             <hr></hr>
           </div>
           <DefaultButton name="Editar Perfil" _func={handleModal} />
@@ -306,6 +312,10 @@ const Profile = () => {
           <DefaultButton name="Confirmar" type="submit" />
         </form>
       </Modal>
+      <Ocean>
+        <Wave></Wave>
+        <Wave></Wave>
+      </Ocean>
     </>
   );
 };

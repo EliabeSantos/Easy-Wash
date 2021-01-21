@@ -13,18 +13,19 @@ function SharedInput({
   _helperText,
   value,
   id,
-  margin,
+  margin = "normal",
   _type,
   _min,
   _max,
   _minLength,
   _maxLength,
   _defaultValue,
-  _id
+  _id,
 }) {
   return (
     <>
       <SharedInputElement
+        tabIndex={1}
         id={id}
         width={width}
         height={height}
