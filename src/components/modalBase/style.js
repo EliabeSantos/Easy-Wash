@@ -5,6 +5,7 @@ export const ModalElement = styled.div`
   height: 62.5rem !important;
   width: 70% !important;
   height: 90vh !important;
+  overflow-y: auto;
   background-color: #fff;
   position: fixed;
   top: 0;
@@ -37,12 +38,7 @@ export const ContentContainerModal = styled.div`
   width: 60%;
   max-width: 728px;
   height: 75%;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+  margin: 5rem auto;
   /* background-color: azure; */
   text-align: center;
   .div {
