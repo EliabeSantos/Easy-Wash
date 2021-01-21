@@ -2,13 +2,14 @@
   font-size: 60%;
   --color-primary: #3d90ab;
   --color-secondary: #47d4ff;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
+  background-color: #efefef;
 }
 
 html::-webkit-scrollbar-track {
