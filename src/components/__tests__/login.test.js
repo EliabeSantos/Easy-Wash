@@ -1,6 +1,7 @@
 import { render, screen,fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Login from "../../pages/login";
+import DefaultButton from "../sharedButton";
 import axios from "axios";
 import "@testing-library/jest-dom";
 
@@ -49,4 +50,16 @@ test("Password input should accept", async () => {
   fireEvent.change(passwordInputNode,{target:{value:'testando'}})
   expect (passwordInputNode.value).toMatch("testando");
 });
+
+test("checking if there is a send button",()=>{
+  const {getByRole} = render(
+    <BrowserRouter>
+      <Login />
+    </BrowserRouter>    
+  );    
+  expect(
+    screen.getByRole('button',{name:/Entrar/i})
+  ).toBeInTheDocument();
+});
+
 })

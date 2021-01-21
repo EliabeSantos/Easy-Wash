@@ -91,7 +91,7 @@ const Login = () => {
             {errors.password && <p type="warning">{errors.password.message}</p>}
 
             <ButtonContainer>
-              <DefaultButton data-testid="button" name="Entrar" type="submit" />
+              <DefaultButton data-testid="custom-element" name="Entrar" type="submit" _id="Entrar1" />
             </ButtonContainer>
           </Form>
         </ContainerForm>
