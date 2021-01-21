@@ -18,25 +18,45 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserThunk } from "../../store/modules/currentUser/thunk";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import CepCoords from "coordenadas-do-cep";
 
 const Profile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [currency, setCurrency] = useState("AC");
   const token = localStorage.getItem("authToken");
-  const handleCurrency = (ev) => {
-    setCurrency(ev.target.value);
-  };
+
   const user = useSelector((state) => {
     return state.user;
   });
-  // console.log(user);
+
+  const [cep, setCep] = useState("");
+  const [rua, setStreet] = useState("");
+  const [bairro, setDistrict] = useState("");
+  const [cidade, setCity] = useState("");
+  const [uf, setUF] = useState("");
+
+  const [errorMessage, setErrorMessage] = useState();
+
+  const autoCompleteAddress = async () => {
+    if (cep.length === 8) {
+      try {
+        const data = await CepCoords.getByCep(cep);
+        setStreet(data.logradouro);
+        setDistrict(data.bairro);
+        setCity(data.localidade);
+        setUF(data.uf);
+      } catch (err) {
+        setErrorMessage("Não foi possível concluir o seu cadastro");
+      }
+    }
+  };
 
   const schema = yup.object({
     phone: yup.string(),
     address: yup.object({
       street: yup.string(),
       number: yup.string(),
+      district: yup.string(),
       city: yup.string(),
       UF: yup.string(),
       zipcode: yup.string(),
@@ -68,6 +88,10 @@ const Profile = () => {
       .catch((error) => setError(error));
   };
 
+  const handleSetCep = (evt) => {
+    setCep(evt.target.value);
+  };
+
   const { open, setOpen } = useOpen();
   const handleModal = () => setOpen(!open);
 
@@ -89,112 +113,9 @@ const Profile = () => {
     }
   };
 
-  const federationUnity = [
-    {
-      value: "Acre",
-      label: "AC",
-    },
-    {
-      value: "Alagoas",
-      label: "AL",
-    },
-    {
-      value: "Amapá",
-      label: "AP",
-    },
-    {
-      value: "Amazonas",
-      label: "AM",
-    },
-    {
-      value: "Bahia",
-      label: "BA",
-    },
-    {
-      value: "Ceará",
-      label: "CE",
-    },
-    {
-      value: "Espírito",
-      label: "ES",
-    },
-    {
-      value: "Goiás",
-      label: "GO",
-    },
-    {
-      value: "Maranhão",
-      label: "MA",
-    },
-    {
-      value: "Mato Grosso",
-      label: "MT",
-    },
-    {
-      value: "Mato Grosso do Sul",
-      label: "MS",
-    },
-    {
-      value: "Minas Gerais",
-      label: "MG",
-    },
-    {
-      value: "Pará",
-      label: "PA",
-    },
-    {
-      value: "Amazonas0",
-      label: "AM",
-    },
-    {
-      value: "Paraíba",
-      label: "PB",
-    },
-    {
-      value: "Paraná",
-      label: "PR",
-    },
-    {
-      value: "Pernambuco",
-      label: "PE",
-    },
-    {
-      value: "Piauí",
-      label: "PI",
-    },
-    {
-      value: "Rio de Janeiro",
-      label: "RJ",
-    },
-    {
-      value: "Rio Grande do Norte",
-      label: "RN",
-    },
-    {
-      value: "Rio Grande do Sul",
-      label: "RS",
-    },
-    {
-      value: "Roraima",
-      label: "RR",
-    },
-    {
-      value: "Santa Catarina",
-      label: "SC",
-    },
-    {
-      value: "São Paulo",
-      label: "SP",
-    },
-    {
-      value: "Sergipe",
-      label: "SE",
-    },
-    {
-      value: "Distrito Federal",
-      label: "DF",
-    },
-  ];
+  useEffect(() => {
+    autoCompleteAddress();
+  }, [cep]);
 
   useEffect(() => dispatch(getUserThunk()), [user]);
   const { street, number, district, city, UF } = user.address;
@@ -252,6 +173,8 @@ const Profile = () => {
               name="address.zipcode"
               label="CEP"
               margin="dense"
+              _onChange={(evt) => handleSetCep(evt)}
+              value={cep}
               _defaultValue={user.address.zipcode}
             />
           </div>
@@ -264,6 +187,8 @@ const Profile = () => {
               label="Rua"
               width="20rem"
               margin="dense"
+              value={rua}
+              _onChange={(evt) => setStreet(evt.target.value)}
               _defaultValue={user.address.street}
             />
             <Input
@@ -280,6 +205,21 @@ const Profile = () => {
 
           <div className="div">
             <Input
+              _error={!!errors.district}
+              _helperText={errors.district?.message}
+              _inputRef={register}
+              name="address.district"
+              label="Bairro"
+              width="20rem"
+              margin="dense"
+              value={bairro}
+              _onChange={(evt) => setDistrict(evt.target.value)}
+              _defaultValue={user.address.district}
+            />
+          </div>
+
+          <div className="div">
+            <Input
               _error={!!errors.city}
               _helperText={errors.city?.message}
               _inputRef={register}
@@ -287,28 +227,23 @@ const Profile = () => {
               label="Cidade"
               width="20rem"
               margin="dense"
+              value={cidade}
+              _onChange={(evt) => setCity(evt.target.value)}
               _defaultValue={user.address.city}
             />
-            <Select
-              error={!!errors.UF}
-              helperText={errors.UF?.message}
-              inputRef={register}
+            <Input
+              _error={!!errors.UF}
+              _helperText={errors.UF?.message}
+              _inputRef={register}
               id="outlined-select-currency"
-              select
-              value={currency}
-              onChange={handleCurrency}
-              variant="outlined"
               label="UF"
               margin="dense"
               width="4.5rem"
               name="address.UF"
-            >
-              {federationUnity.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </Select>
+              value={uf}
+              _onChange={(evt) => setUF(evt.target.value)}
+              _defaultValue={user.address.UF}
+            ></Input>
           </div>
           <DefaultButton name="Confirmar" type="submit" />
         </form>
