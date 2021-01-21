@@ -15,7 +15,7 @@ export const MainContainer = styled.div`
     border: none;
     color: #e5e5e5;
     padding: 1rem;
-    border-radius: 1rem;
+    border-radius: 5px;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 1rem;

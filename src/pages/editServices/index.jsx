@@ -128,6 +128,7 @@ const EditServices = () => {
               name="price"
               label="Preço"
               margin="dense"
+              type="number"
             />
           </InputContainer>
 

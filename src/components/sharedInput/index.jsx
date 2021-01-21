@@ -21,13 +21,14 @@ function SharedInput({
   _defaultValue,
   _id,
   rows,
+  multiline,
 }) {
   return (
     <>
       <SharedInputElement
         rows={rows}
-        multiline
         id={_id}
+        multiline={multiline ? true : false}
         width={width}
         height={height}
         margin={margin}
