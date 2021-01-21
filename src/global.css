@@ -9,6 +9,16 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background-color: #efefef;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 html::-webkit-scrollbar-track {

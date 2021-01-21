@@ -51,8 +51,8 @@ const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
     getDatasFromUser();
   }, [id]);
 
-  const { street, number, district, city, UF } = addressInfo;
-
+  const { street, number, district, city } = addressInfo;
+  console.log(addressInfo);
   return (
     <>
       <Header />
@@ -66,7 +66,7 @@ const CheckoutServices = ({ cart, getCached, removeFromCart }) => {
                 {street ? (
                   <h2>
                     <BiMap /> &nbsp;
-                    {`${street}, ${number} - ${district}, ${city}, ${UF}`}
+                    {`${street}, ${number} - ${district}, ${city}`}
                   </h2>
                 ) : (
                   <h1>...</h1>
