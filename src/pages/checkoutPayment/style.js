@@ -8,34 +8,28 @@ export const Container = styled.div`
   }
 
   fieldset {
-    /* background-color: lightgreen; */
     width: 100%;
-    height: 40vh;
 
     .MuiFormGroup-root {
-      /* background-color: lightcoral; */
-      height: 20rem;
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
-      justify-content: space-around;
+      justify-content: space-evenly;
       align-items: center;
 
       @media (min-height: 450px) {
-        height: 100%;
+        height: 40vh;
         flex-direction: column;
-        flex-wrap: wrap;
       }
 
       .MuiFormControlLabel-root {
         margin: 0;
-        width: 18rem;
-        /* height: 4rem; */
+        width: 15rem;
         display: flex;
         justify-content: space-evenly;
 
         span.MuiTypography-root {
-          width: 40%;
+          width: 30%;
           img {
             width: 100%;
           }
@@ -52,6 +46,7 @@ export const Container = styled.div`
     font-size: 1.4rem;
     width: 15rem;
     height: 3rem;
+    margin: 1rem;
 
     @media (min-height: 450px) {
       height: 4rem;
@@ -99,10 +94,8 @@ export const Container = styled.div`
     }
 
     fieldset {
-      /* background-color: lightcoral; */
       height: 40vh;
       .MuiFormGroup-root {
-        /* background-color: lightblue; */
         flex-direction: row;
 
         .MuiFormControlLabel-root {
