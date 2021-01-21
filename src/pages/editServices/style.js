@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
   width: 100%;
+  max-width: 728px;
   height: 80vh;
   position: relative;
   text-align: center;
-  margin-bottom: 5%;
+  margin: 0 auto;
   h2 {
     margin-top: 5rem;
   }

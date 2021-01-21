@@ -23,13 +23,12 @@ export const MainContainer = styled.div`
   }
 
   width: 100%;
+  max-width: 728px;
+  margin: 0 auto;
   height: 80vh;
   position: relative;
   text-align: center;
   z-index: 1;
-  margin-bottom: 5%;
-  @media (min-width: 1024px) {
-  }
 `;
 
 export const InformationContainer = styled.div`

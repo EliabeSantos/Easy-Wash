@@ -35,6 +35,7 @@ export const ContainerIcon = styled.i`
 
 export const ContentContainerModal = styled.div`
   width: 60%;
+  max-width: 728px;
   height: 75%;
   position: fixed;
   top: 0;
@@ -48,7 +49,8 @@ export const ContentContainerModal = styled.div`
     width: 100%;
   }
   @media (max-width: 439px) {
-    div, button {
+    div,
+    button {
       width: 100%;
     }
   }

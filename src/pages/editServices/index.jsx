@@ -82,8 +82,8 @@ const EditServices = () => {
 
   return (
     <>
+      <Header />
       <MainContainer>
-        <Header />
         <h1>{user.company}</h1>
         <InformationContainer>
           <h2>Serviços:</h2>
