@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+<div align="center">
+<img src="/imagemreadme/titulo.svg" alt="titulo" width="300" height="127"></img>
+</div>
+<hr>
+<br>
+<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<div align="center">
+<h3 align="center">Desktop</h3>
+<img src="/imagemreadme/Desktop.gif" alt="demo-desktop" width="700" height="425"></img>
+</div>
+<br>
+<br>
 
-In the project directory, you can run:
+<div align="center">
+<h3 align="center">Mobile</h3>
+<img src="/imagemreadme/Mobile.gif" alt="demo-mobile" height="425"></img>
+</div>
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+------------
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+<br>
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📚 Descrição ##
+<br>
+<p align="center">
+O Easy Wash atua trazendo um "cardápio" de lavanderias nas mais diversas regiões prestando seus serviços. A ideia é que o cliente possa entregar um pacote com as suas roupas sujas, que seriam entregues a uma lavanderia de sua escolha e depois fossem entregues limpas, passadas e dobradas ao consumidor.
+</p>
+<p>
+  Isso aumentaria a disponibilidade de espaço em apartamentos pequenos, não teria mais incomodos com as máquinas de lavar roupa e poderia reduzir os custos de viver sozinho, além de estimular o comércio.
+</p>
+<br>
+<h2> 🛠 Tecnologias </h2>
+<br>
 
-### `yarn build`
+As seguintes ferramentas foram usadas na construção do projeto:
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [ReactJS](https://pt-br.reactjs.org)
+- [Redux](https://redux.js.org/)
+- [Thunk](https://github.com/reduxjs/redux-thunk)
+- [Yup](https://github.com/jquense/yup)
+- [Material UI](https://material-ui.com/pt/)
+- [Jest](https://www.typescriptlang.org)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+------------
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📌 Autores ##
+<br>
 
-### `yarn eject`
+- Diego Barboza Pires :- [Linkedin](https://www.linkedin.com/in/diego-barboza-pires-confianca/)
+- Eliabe Santos  :- [Linkedin](https://www.linkedin.com/in/eliabe-santos/)
+- Emanuel José da Silva :- [Linkedin](https://www.linkedin.com/in/emanueljose/)
+- Gustavo Barbosa  :- [Linkedin](https://www.linkedin.com/in/gustavo-barbosa-7953066b/)
+- Kevin Wischneski :- [Linkedin](https://www.linkedin.com/in/kevin-wischneski/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
