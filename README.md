@@ -8,7 +8,7 @@
 
 <div align="center">
 <h3 align="center">Desktop</h3>
-<img src="/imagemreadme/Desktop.gif" alt="demo-desktop" width="700" height="425"></img>
+<img src="/imagemreadme/Desktop.gif" alt="demo-desktop" width="700"></img>
 </div>
 <br>
 <br>
@@ -25,19 +25,20 @@
 <br>
 <br>
 
-## 📚 Descrição ##
+## 📚 Description ##
 <br>
 <p align="center">
-O Easy Wash atua trazendo um "cardápio" de lavanderias nas mais diversas regiões prestando seus serviços. A ideia é que o cliente possa entregar um pacote com as suas roupas sujas, que seriam entregues a uma lavanderia de sua escolha e depois fossem entregues limpas, passadas e dobradas ao consumidor.
+  Easy Wash works by bringing a "menu" of laundries over a set radius providing a diverse range of services.
+The central idea behind Wasy Wash is to give the client the comfort of only handling their clothes to the laundry representative on his front-door and let them  do the job.
 </p>
 <p>
-  Isso aumentaria a disponibilidade de espaço em apartamentos pequenos, não teria mais incomodos com as máquinas de lavar roupa e poderia reduzir os custos de viver sozinho, além de estimular o comércio.
+  This model helps people living in small apartments better manage costs and free space in their homes, since they don't have the need to handle a big and heavy washing machine anymore.
 </p>
 <br>
-<h2> 🛠 Tecnologias </h2>
+<h2> 🛠 Technologies </h2>
 <br>
 
-As seguintes ferramentas foram usadas na construção do projeto:
+Techs used in this project:
 <br>
 
 - [ReactJS](https://pt-br.reactjs.org)
@@ -49,12 +50,13 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ------------
 
-## 📌 Autores ##
+## 📌 Authors ##
 <br>
 
-- Diego Barboza Pires :- [Linkedin](https://www.linkedin.com/in/diego-barboza-pires-confianca/)
-- Eliabe Santos  :- [Linkedin](https://www.linkedin.com/in/eliabe-santos/)
-- Emanuel José da Silva :- [Linkedin](https://www.linkedin.com/in/emanueljose/)
-- Gustavo Barbosa  :- [Linkedin](https://www.linkedin.com/in/gustavo-barbosa-7953066b/)
-- Kevin Wischneski :- [Linkedin](https://www.linkedin.com/in/kevin-wischneski/)
+- Kevin Wischneski - [Linkedin](https://www.linkedin.com/in/kevin-wischneski/) [Github](https://github.com/KevinWis)
+- Diego Barboza Pires - [Linkedin](https://www.linkedin.com/in/diego-barboza-pires-confianca/)
+- Eliabe Santos  - [Linkedin](https://www.linkedin.com/in/eliabe-santos/) [Github](https://github.com/EliabeSantos)
+- Gustavo Barbosa  - [Linkedin](https://www.linkedin.com/in/gustavo-barbosa-7953066b/) [Github](https://github.com/gustavobarsan)
+- Emanuel José da Silva :- [Linkedin](https://www.linkedin.com/in/emanueljose/) [Github](https://github.com/emanuel-jose)
+
 
